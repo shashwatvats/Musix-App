@@ -18,27 +18,37 @@ function Login(props) {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  //   const loginHandler = () => {
-  //     fetch("http://localhost:3001/auth/v1", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         email,
-  //         password,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.token) {
-  //           localStorage.setItem("token", data.token);
-  //           props.setLoggedIn();
-  //           props.setemail(email);
-  //           props.history.push("/");
-  //         }
-  //       });
-  //   };
+    const loginHandler = () => {
+      fetch("http://localhost:9000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status=="200") {
+            localStorage.setItem("token", data.access_token);
+            // props.setfirstName(data.userData.firstname);
+            props.setseverity("success");
+            props.setsnackOpen(true);
+            props.setsnackMessage("LoggedIn Successfully!!");
+            props.history.push("/");
+            return;
+          }
+            props.setseverity("error");
+            props.setsnackOpen(true);
+            props.setsnackMessage(data.message);
+        }).catch(err=> {
+             props.setseverity("error");
+             props.setsnackOpen(true);
+             props.setsnackMessage(err.message);
+        });
+    };
 
   return (
     <div className="d-flex">
@@ -83,7 +93,7 @@ function Login(props) {
               color="secondary"
               variant="contained"
               className={`mt-3 me-3`}
-              // onClick={loginHandler}
+              onClick={loginHandler}
             >
               Login
             </Button>

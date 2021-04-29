@@ -18,35 +18,60 @@ function App() {
       return;
     }
 
-    setOpen(false);
+    setsnackOpen(false);
   };
-  const [open, setOpen] = React.useState(true);
+  const [snackOpen, setsnackOpen] = useState(false);
+  const [snackMessage, setsnackMessage] = useState("");
+const [severity, setseverity] = useState("");
+const [modalOpen, setmodalOpen] = useState(false);
   return (
     <div>
       <BrowserRouter>
         <div style={{ width: "100vw", height: "12vh" }}>
-          <Header />
+          <Header setmodalOpen={setmodalOpen} />
         </div>
         <div style={{ width: "100vw", height: "12vh", overflow: "auto" }}>
           <Modal
-            open={true}
+            open={modalOpen}
             handleClose={() => {
-              console.log("closed");
+              setmodalOpen(false);
             }}
           >
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/register"
+              render={(props) => (
+                <Register
+                  {...props}
+                  setsnackMessage={setsnackMessage}
+                  setsnackOpen={setsnackOpen}
+                  setseverity={setseverity}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/login"
+              render={(props) => (
+                <Login
+                  {...props}
+                  setsnackMessage={setsnackMessage}
+                  setsnackOpen={setsnackOpen}
+                  setseverity={setseverity}
+                />
+              )}
+            />
           </Modal>
         </div>
       </BrowserRouter>
       <Snackbar
-        open={open}
+        open={snackOpen}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         autoHideDuration={2000}
         onClose={handleClose}
       >
-        <Alert onClose={handleClose} severity="success">
-          Login Successful!
+        <Alert onClose={handleClose} severity={severity}>
+          {snackMessage}
         </Alert>
       </Snackbar>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-function Header() {
+function Header(props) {
   return (
     <div>
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
@@ -38,9 +39,14 @@ function Header() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Login/Signup
-                </a>
+                <NavLink
+                  exact
+                  className="nav-link btn btn-primary"
+                  to="/login"
+                  onClick={()=>{props.setmodalOpen(true)}}
+                >
+                  Login/Sign Up <i class="fas fa-sign-in-alt"></i>
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -20,28 +20,48 @@ function Register(props) {
   const [city, setcity] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [error, seterror] = useState("");
 
-  //   const loginHandler = () => {
-  //     fetch("http://localhost:3001/auth/v1", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         email,
-  //         password,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.token) {
-  //           localStorage.setItem("token", data.token);
-  //           props.setLoggedIn();
-  //           props.setemail(email);
-  //           props.history.push("/");
-  //         }
-  //       });
-  //   };
+  const register = () => {
+    if (password == "" || email == "" || firstName == "") {
+      props.setseverity("error");
+      props.setsnackOpen(true);
+      props.setsnackMessage("Password, Email and firstName required!!");
+      return;
+    }
+    fetch("http://localhost:9000/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname: firstName,
+        lastname: lastName,
+        city,
+        age,
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == "200") {
+            props.setseverity("success");
+          props.setsnackOpen(true);
+          props.setsnackMessage(data.message);
+          props.history.push("/login");
+        } else if (data.status == "409") {
+            props.setseverity("error");
+          props.setsnackOpen(true);
+          props.setsnackMessage(data.message);
+        }
+      })
+      .catch((err) => {
+          props.setseverity("error");
+        props.setsnackOpen(true);
+        props.setsnackMessage(err.message);
+      });
+  };
 
   return (
     <div className="d-flex">
@@ -141,7 +161,7 @@ function Register(props) {
               color="secondary"
               variant="contained"
               className={`mt-3 me-3`}
-              // onClick={loginHandler}
+              onClick={register}
             >
               Register
             </Button>

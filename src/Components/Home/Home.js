@@ -6,7 +6,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 function Home() {
   return (
     <div>
-      <Modal />
+      Home Page
       
     </div>
   );

@@ -1,7 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 function Header(props) {
+  let history = useHistory();
+
+  function logOutHandler() {
+    props.setisLoggedIn(false);
+    localStorage.clear();
+    history.push("/");
+  }
+
   return (
     <div>
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
@@ -34,20 +43,22 @@ function Header(props) {
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+                <NavLink className="nav-link" exact to="/">Home</NavLink>
               </li>
-              <li class="nav-item">
-                <NavLink
-                  exact
-                  className="nav-link btn btn-primary"
-                  to="/login"
-                  onClick={()=>{props.setmodalOpen(true)}}
-                >
-                  Login/Sign Up <i class="fas fa-sign-in-alt"></i>
-                </NavLink>
-              </li>
+              {props.isLoggedIn ?  <li className="nav-item"><span class="nav-link">{localStorage.getItem('firstName')}</span> </li>
+              :
+                <li class="nav-item">
+                  <Button className="nav-link" variant="contained" color="primary" onClick={() => { props.setmodalOpen(true); props.settype("login") }}>LogIn/SignUp <i class="fas fa-sign-in-alt"></i></Button>
+                </li>
+              }
+
+              {props.isLoggedIn ? <li className="nav-item">
+                 <Button className="nav-link" variant="contained" color="primary" onClick={logOutHandler}>LogOut <i class="fas fa-sign-in-alt"></i></Button>
+              </li> : "" }
+
+
+
+
             </ul>
           </div>
         </div>
@@ -57,3 +68,17 @@ function Header(props) {
 }
 
 export default Header;
+
+
+{/* <NavLink
+                  exact
+                  className="nav-link btn btn-primary"
+                  to="/login"
+                  
+                >
+                  Login/Sign Up 
+                </NavLink> */}
+
+{/* <li class="nav-item">
+                <Button className="nav-link" type="contained" color="primary" onClick={()=>{props.setmodalOpen(true); props.settype("register")}}>SignUp <i class="fas fa-sign-in-alt"></i></Button>
+              </li> */}

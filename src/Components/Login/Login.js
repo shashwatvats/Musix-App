@@ -33,16 +33,19 @@ function Login(props) {
         .then((data) => {
           if (data.status=="200") {
             localStorage.setItem("token", data.access_token);
-            // props.setfirstName(data.userData.firstname);
             props.setseverity("success");
             props.setsnackOpen(true);
             props.setsnackMessage("LoggedIn Successfully!!");
-            props.history.push("/");
+            props.setisLoggedIn(true);
+            props.setmodalOpen(false);
+            // props.setfirstName(data.userData.firstname);
+            localStorage.setItem("firstName",data.userData.firstname);
             return;
           }
             props.setseverity("error");
             props.setsnackOpen(true);
             props.setsnackMessage(data.message);
+
         }).catch(err=> {
              props.setseverity("error");
              props.setsnackOpen(true);
@@ -97,13 +100,10 @@ function Login(props) {
             >
               Login
             </Button>
-            <Button variant="contained" color="secondary" className={`mt-3`}>
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                to="/register"
-              >
+            <Button variant="contained" color="secondary" className={`mt-3`} onClick={()=>{props.settype('register')}}>
+             
                 SignUp
-              </Link>
+            
             </Button>
           </div>
           <hr />

@@ -49,12 +49,13 @@ function Register(props) {
             props.setseverity("success");
           props.setsnackOpen(true);
           props.setsnackMessage(data.message);
-          props.history.push("/login");
-        } else if (data.status == "409") {
-            props.setseverity("error");
+          // props.setmodalOpen(false);
+          props.settype('login');
+          return;
+        } 
+          props.setseverity("error");
           props.setsnackOpen(true);
           props.setsnackMessage(data.message);
-        }
       })
       .catch((err) => {
           props.setseverity("error");
@@ -165,13 +166,10 @@ function Register(props) {
             >
               Register
             </Button>
-            <Button variant="contained" color="secondary" className={`mt-3`}>
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                to="/login"
-              >
+            <Button variant="contained" color="secondary" className={`mt-3`} onClick={()=>{props.settype('login')}}>
+            
                 Sign-in
-              </Link>
+             
             </Button>
           </div>
           <hr />

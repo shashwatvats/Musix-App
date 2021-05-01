@@ -13,7 +13,7 @@ function getModalStyle() {
   return {
     top: `${top}vh`,
     left: `${left}vw`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-${top}%, -${left}%)`
   };
 }
 

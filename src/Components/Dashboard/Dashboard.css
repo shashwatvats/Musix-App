@@ -1,0 +1,22 @@
+.main-carousel .carousel-item {
+    height: 50vh;
+  }
+  
+  .main-carousel .carousel-item img {
+    position: absolute;
+    opacity: 0.85;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+  .main-carousel .carousel-caption a {
+    color: white;
+  }
+  .main-carousel .carousel-caption a i {
+    transition: all 0.3s ease;
+  }
+  .main-carousel .carousel-caption a i:hover {
+    color: red;
+  }
+  

@@ -13,7 +13,7 @@ function SliderAlbum(props) {
         setalbums(data.albums);
       });
   }, []);
-  console.log(albums);
+
   let sizes = [576, 992, 1400];
   let carouselsize = [2, 4, 6];
 

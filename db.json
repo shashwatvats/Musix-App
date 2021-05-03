@@ -1,323 +1,74 @@
 {
   "favourites": [
     {
-      "type": "track",
-      "id": "tra.576892505",
-      "index": 4,
-      "disc": 1,
-      "href": "https://api.napster.com/v2.2/tracks/tra.576892505",
-      "playbackSeconds": 196,
-      "isExplicit": true,
-      "isStreamable": true,
-      "isAvailableInHiRes": false,
-      "name": "Little Did I Know",
-      "isrc": "USUM72105029",
-      "shortcut": "julia-michaels/not-in-chronological-order-ep/little-did-i-know",
-      "blurbs": [],
-      "artistId": "art.39005292",
-      "artistName": "Julia Michaels",
-      "albumName": "Not In Chronological Order",
-      "formats": [
-        {
-          "type": "format",
-          "bitrate": 128,
-          "name": "MP3",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 192,
-          "name": "AAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 320,
-          "name": "AAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 64,
-          "name": "AAC PLUS",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        }
-      ],
-      "losslessFormats": [
-        {
-          "type": "format",
-          "bitrate": 44100,
-          "name": "FLAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        }
-      ],
-      "albumId": "alb.576892429",
-      "contributors": {
-        "featuredPerformer": "art.20048",
-        "producer": "art.20048",
-        "collaborator": "art.14233413",
-        "remixer": "art.26871489",
-        "engineer": "art.26871489",
-        "composer": "art.39005292",
-        "primaryArtist": "art.39005292",
-        "guestMusician": "art.317114483"
-      },
-      "links": {
-        "artists": {
-          "ids": [
-            "art.39005292"
-          ],
-          "href": "https://api.napster.com/v2.2/artists/art.39005292"
-        },
-        "albums": {
-          "ids": [
-            "alb.576892429"
-          ],
-          "href": "https://api.napster.com/v2.2/albums/alb.576892429"
-        },
-        "composers": {
-          "ids": [
-            "art.39005292"
-          ],
-          "href": "https://api.napster.com/v2.2/artists/art.39005292"
-        },
-        "genres": {
-          "ids": [
-            "g.115"
-          ],
-          "href": "https://api.napster.com/v2.2/genres/g.115"
-        },
-        "tags": {
-          "ids": [
-            "tag.152196495"
-          ],
-          "href": "https://api.napster.com/v2.2/tags/tag.152196495"
-        }
-      },
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/2/6/7/3/2374837629.mp3",
-      "email": "a"
+      "id": "a-tra.574746173",
+      "email": "a",
+      "albumId": "alb.574746172",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/5/1/0/5/2365650155.mp3",
+      "name": "One By One (feat. Elderbrook & Andhim)"
     },
     {
-      "type": "track",
-      "id": "tra.579080597",
-      "index": 5,
-      "disc": 1,
-      "href": "https://api.napster.com/v2.2/tracks/tra.579080597",
-      "playbackSeconds": 165,
-      "isExplicit": true,
-      "isStreamable": true,
-      "isAvailableInHiRes": false,
-      "name": "I DID IT",
-      "isrc": "USSM12102187",
-      "upc": "886448654483",
-      "shortcut": "dj-khaled/khaled-khaled/i-did-it",
-      "blurbs": [],
-      "artistId": "art.10337267",
-      "artistName": "DJ Khaled",
-      "albumName": "KHALED KHALED",
-      "formats": [
-        {
-          "type": "format",
-          "bitrate": 128,
-          "name": "MP3",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 320,
-          "name": "AAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 192,
-          "name": "AAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 64,
-          "name": "AAC PLUS",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        }
-      ],
-      "losslessFormats": [
-        {
-          "type": "format",
-          "bitrate": 44100,
-          "name": "FLAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        }
-      ],
-      "albumId": "alb.579080592",
-      "contributors": {
-        "featuredPerformer": "art.61938941",
-        "composer": "art.263633888",
-        "primaryArtist": "art.10337267"
-      },
-      "links": {
-        "artists": {
-          "ids": [
-            "art.10337267"
-          ],
-          "href": "https://api.napster.com/v2.2/artists/art.10337267"
-        },
-        "albums": {
-          "ids": [
-            "alb.579080592"
-          ],
-          "href": "https://api.napster.com/v2.2/albums/alb.579080592"
-        },
-        "composers": {
-          "ids": [
-            "art.263633888"
-          ],
-          "href": "https://api.napster.com/v2.2/artists/art.263633888"
-        },
-        "genres": {
-          "ids": [
-            "g.1037",
-            "g.173",
-            "g.249",
-            "g.146",
-            "g.510",
-            "g.135"
-          ],
-          "href": "https://api.napster.com/v2.2/genres/g.1037,g.173,g.249,g.146,g.510,g.135"
-        },
-        "tags": {
-          "ids": [
-            "tag.152196517",
-            "tag.152196521",
-            "tag.152196515",
-            "tag.152196557",
-            "tag.152196546"
-          ],
-          "href": "https://api.napster.com/v2.2/tags/tag.152196517,tag.152196521,tag.152196515,tag.152196557,tag.152196546"
-        }
-      },
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/4/7/0/9/5/2375259074.mp3",
-      "email": "a"
-    },
-    {
-      "type": "track",
-      "id": "tra.579019959",
-      "index": 1,
-      "disc": 1,
-      "href": "https://api.napster.com/v2.2/tracks/tra.579019959",
-      "playbackSeconds": 245,
-      "isExplicit": false,
-      "isStreamable": true,
-      "isAvailableInHiRes": false,
-      "name": "Your Power",
-      "isrc": "USUM72105934",
-      "upc": "00602438242962",
-      "shortcut": "billie-eilish/your-power/your-power",
-      "blurbs": [],
-      "artistId": "art.214281475",
-      "artistName": "Billie Eilish",
-      "albumName": "Your Power",
-      "formats": [
-        {
-          "type": "format",
-          "bitrate": 128,
-          "name": "MP3",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 320,
-          "name": "AAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 192,
-          "name": "AAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        },
-        {
-          "type": "format",
-          "bitrate": 64,
-          "name": "AAC PLUS",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        }
-      ],
-      "losslessFormats": [
-        {
-          "type": "format",
-          "bitrate": 44100,
-          "name": "FLAC",
-          "sampleBits": 16,
-          "sampleRate": 44100
-        }
-      ],
+      "id": "q-tra.579019959",
+      "email": "q",
       "albumId": "alb.579019957",
-      "contributors": {
-        "engineer": "art.234968074",
-        "composer": "art.267591137",
-        "producer": "art.234968074",
-        "featuredPerformer": "art.214281475",
-        "guestVocals": "art.214281475",
-        "collaborator": "art.234968074",
-        "remixer": "art.33131193",
-        "guestMusician": "art.234968074",
-        "primaryArtist": "art.214281475"
-      },
-      "links": {
-        "artists": {
-          "ids": [
-            "art.214281475"
-          ],
-          "href": "https://api.napster.com/v2.2/artists/art.214281475"
-        },
-        "albums": {
-          "ids": [
-            "alb.579019957"
-          ],
-          "href": "https://api.napster.com/v2.2/albums/alb.579019957"
-        },
-        "composers": {
-          "ids": [
-            "art.267591137"
-          ],
-          "href": "https://api.napster.com/v2.2/artists/art.267591137"
-        },
-        "genres": {
-          "ids": [
-            "g.218",
-            "g.71",
-            "g.33",
-            "g.115"
-          ],
-          "href": "https://api.napster.com/v2.2/genres/g.218,g.71,g.33,g.115"
-        },
-        "tags": {
-          "ids": [
-            "tag.152196506",
-            "tag.152196543",
-            "tag.152196505",
-            "tag.152196495"
-          ],
-          "href": "https://api.napster.com/v2.2/tags/tag.152196506,tag.152196543,tag.152196505,tag.152196495"
-        }
-      },
       "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
-      "email": "a"
+      "name": "Your Power"
+    },
+    {
+      "id": "q-tra.578175454",
+      "email": "q",
+      "albumId": "alb.578175453",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/2/3/8/7/2373178325.mp3",
+      "name": "Die For a Man (feat. Lil Uzi Vert)"
+    },
+    {
+      "id": "q-tra.484332151",
+      "email": "q",
+      "albumId": "alb.484332144",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/6/7/2/7/1/2114717276.mp3",
+      "name": "The Good Ones"
+    },
+    {
+      "id": "a-tra.579019959",
+      "email": "a",
+      "albumId": "alb.579019957",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
+      "name": "Your Power"
+    },
+    {
+      "id": "c-tra.570433593",
+      "email": "c",
+      "albumId": "alb.570433584",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/8/7/7/2/2359827789.mp3",
+      "name": "Met Him Last Night"
+    },
+    {
+      "id": "c-tra.525431267",
+      "email": "c",
+      "albumId": "alb.525431265",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/3/5/4/5/5/2237855453.mp3",
+      "name": "34+35"
+    },
+    {
+      "id": "c-tra.578175454",
+      "email": "c",
+      "albumId": "alb.578175453",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/2/3/8/7/2373178325.mp3",
+      "name": "Die For a Man (feat. Lil Uzi Vert)"
+    },
+    {
+      "id": "c-tra.576892505",
+      "email": "c",
+      "albumId": "alb.576892429",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/2/6/7/3/2374837629.mp3",
+      "name": "Little Did I Know"
+    },
+    {
+      "id": "c-tra.579019959",
+      "email": "c",
+      "albumId": "alb.579019957",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
+      "name": "Your Power"
     }
   ]
 }

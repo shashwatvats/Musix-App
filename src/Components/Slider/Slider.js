@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import './Slider.css';
@@ -9,7 +8,7 @@ function Slider(props) {
     // const [screenSize, setscreenSize] = useState(window.innerWidth);
     const [songs, setsongs] = useState([]);
     const [loading, setloading] = useState(true);
-    const { playlist, screenSize } = props;
+    const { playlist, screenSize , favouriteSongsIds} = props;
     const [playbutton, setplaybutton] = useState({});
 
     let arr = [];
@@ -21,9 +20,18 @@ function Slider(props) {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
-                ...song,
-                email: localStorage.getItem('email')
+                id: `${localStorage.getItem('email')}-${song.id}`,
+                email: localStorage.getItem('email'),
+                albumId: song.albumId,
+                previewURL: song.previewURL,
+                name: song.name
             })
+        });
+    }
+
+    function deleteFavourite(id) {
+        fetch(`http://localhost:4000/favourites/${id}`, {
+            method: 'DELETE'
         });
     }
 
@@ -61,7 +69,8 @@ function Slider(props) {
                                         <h5 className="card-title">{song.name.split("(").shift()}</h5>
                                         {/* <FavoriteIcon color="secondary"/>
                                     <FavoriteBorderIcon /> */}
-                                        <Button variant="contained" onClick={() => { addToFavourite(song) }}>Add <FavoriteIcon /></Button>
+                                      {  favouriteSongsIds.includes(`${localStorage.getItem('email')}-${song.id}`)? <FavoriteIcon color="secondary" onClick={()=>{deleteFavourite(`${localStorage.getItem('email')}-${song.id}`)}}/> : <FavoriteBorderIcon onClick={() => { addToFavourite(song)}} /> }
+                                        {/* <Button variant="contained" onClick={() => { addToFavourite(song) }}>Add <FavoriteIcon /></Button> */}
                                     </div>
                                 </div>
                             )}
@@ -81,10 +90,9 @@ function Slider(props) {
             .then(data => {
                 setsongs(data.tracks);
                 setloading(false);
-                console.log(data.tracks);
                 carouselSlider();
             })
-    }, [])
+    }, []);
 
     carouselSlider();
     return (

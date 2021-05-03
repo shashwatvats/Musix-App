@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { DashboardContext } from '../Dashboard/Dashboard';
 import Paper from '@material-ui/core/Paper';
+import '../Slider/Slider.css';
 
 function FavouriteSlider(props) {
+    const [playbutton, setplaybutton] = useState({});
     const screenSize = useContext(DashboardContext);
     let arr = [];
     const { favourites } = props;
@@ -29,15 +31,24 @@ function FavouriteSlider(props) {
                     arr.push(<div class={`carousel-item ${active}`}>
                         <div className="row">
                             {favourites.slice(i, i + carouselsize[j]).map(favouriteSong =>
-                                <div class="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
+                                <div class="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container">
                                     <img src={`https://api.napster.com/imageserver/v2/albums/${favouriteSong.albumId}/images/500x500.jpg`}
                                         className="card-img-top"
                                         style={{ borderRadius: '12px' }}
                                         alt="..."
                                     />
+                                    <div>
+                                        <audio src={favouriteSong.previewURL} id={`favplay-${favouriteSong.id}`}>
+                                        </audio>
+
+                                        {playbutton[favouriteSong.id] ? <i onClick={() => { document.getElementById(`favplay-${favouriteSong.id}`).pause(); setplaybutton(prevState => { return { ...prevState, [favouriteSong.id]: false } }) }} class="far fa-pause-circle fa-2x btn"></i> :
+                                            <i onClick={() => { document.getElementById(`favplay-${favouriteSong.id}`).play(); setplaybutton(prevState => { return { ...prevState, [favouriteSong.id]: true } }) }} class="far fa-play-circle fa-2x btn"></i>
+                                        }
+
+                                    </div>
                                     <div className="card-body">
                                         <h5 className="card-title">{favouriteSong.name.split("(").shift()}</h5>
-                                        <DeleteIcon color="secondary"  onClick={() => { deleteFavourite(favouriteSong.id) }} />
+                                        <DeleteIcon color="secondary" onClick={() => { deleteFavourite(favouriteSong.id) }} />
                                     </div>
                                 </div>
                             )}
@@ -71,20 +82,20 @@ function FavouriteSlider(props) {
                     class="carousel-control-prev"
                     type="button"
                     data-bs-target="#favourites"
-                    style={{height:'50%',width: '5%'}}
+                    style={{ height: '50%', width: '5%' }}
                     data-bs-slide="prev"
                 >
-                    <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true" style={{backgroundColor: 'rgba(0,0,0,.6)'}}></span>
+                    <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true" style={{ backgroundColor: 'rgba(0,0,0,.6)' }}></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button
                     class="carousel-control-next"
                     type="button"
                     data-bs-target="#favourites"
-                    style={{height:'50%',width: '5%'}}
+                    style={{ height: '50%', width: '5%' }}
                     data-bs-slide="next"
                 >
-                    <span class="carousel-control-next-icon rounded-circle" style={{backgroundColor: 'rgba(0,0,0,.6)'}} aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon rounded-circle" style={{ backgroundColor: 'rgba(0,0,0,.6)' }} aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>

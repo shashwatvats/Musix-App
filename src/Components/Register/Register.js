@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 
 const useStyles = makeStyles({
@@ -20,7 +19,7 @@ function Register(props) {
   const [city, setcity] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [error, seterror] = useState("");
+  // const [error, seterror] = useState("");
 
   const register = () => {
     if (password == "" || email == "" || firstName == "") {
@@ -70,6 +69,7 @@ function Register(props) {
         <img
           width="250px"
           height="100%"
+          alt="..."
           src="https://images.unsplash.com/photo-1421757350652-9f65a35effc7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fG11c2ljfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
         ></img>
       </div>
@@ -174,27 +174,27 @@ function Register(props) {
           </div>
           <hr />
           <div className="text-center mb-3">
-            <a href="#">
+            <span>
               <i
                 style={{ color: "#1877F2", marginRight: "15px" }}
                 class="fab fa-facebook-f fa-lg"
               ></i>
-            </a>
-            <a href="#">
+           </span>
+           <span>
               <i
                 style={{ color: "#0B66C2", marginRight: "15px" }}
                 class="fab fa-linkedin-in fa-lg"
               ></i>
-            </a>
-            <a href="#">
+            </span>
+            <span>
               <i
                 style={{ color: "#DE4F41", marginRight: "15px" }}
                 class="fab fa-google-plus-g fa-lg"
               ></i>
-            </a>
-            <a href="#">
+            </span>
+            <span>
               <i style={{ color: "black" }} class="fab fa-github fa-lg"></i>
-            </a>
+            </span>
           </div>
         </form>
       </div>

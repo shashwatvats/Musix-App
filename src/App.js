@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Home from "./Components/Home/Home";
@@ -65,10 +64,10 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div style={{ width: "100vw", height: "12vh" }}>
+        <div style={{ width: "100vw", height: "10vh" }}>
           <Header setmodalOpen={setmodalOpen} settype={settype} isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
         </div>
-        <div style={{ width: "100vw", height: "88vh", overflow: "auto" }}>
+        <div style={{ width: "100vw", height: "90vh", overflow: "auto" }}>
           <Switch>
             <Route exact path="/dashboard" render={() => isLoggedIn ? <Dashboard /> : <Redirect to="/" /> } />
             <Route exact path="/" render={() => isLoggedIn ? <Redirect to="/dashboard" /> : <Home /> } />
@@ -101,27 +100,3 @@ function App() {
 export default App;
 
 
-{/* <Route
-              exact
-              path="/register"
-              render={(props) => (
-                <Register
-                  {...props}
-                  setsnackMessage={setsnackMessage}
-                  setsnackOpen={setsnackOpen}
-                  setseverity={setseverity}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/login"
-              render={(props) => (
-                <Login
-                  {...props}
-                  setsnackMessage={setsnackMessage}
-                  setsnackOpen={setsnackOpen}
-                  setseverity={setseverity}
-                />
-              )}
-            /> */}

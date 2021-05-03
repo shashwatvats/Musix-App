@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+
 
 const useStyles = makeStyles({
   textfield: {
@@ -60,6 +58,7 @@ function Login(props) {
         <img
           width="250px"
           height="100%"
+          alt="..."
           src="https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
         ></img>
       </div>
@@ -109,27 +108,27 @@ function Login(props) {
           </div>
           <hr />
           <div className="text-center mb-3">
-            <a href="#">
+            <span>
               <i
                 style={{ color: "#1877F2", marginRight: "15px" }}
                 class="fab fa-facebook-f fa-lg"
               ></i>
-            </a>
-            <a href="#">
+            </span>
+            <span>
               <i
                 style={{ color: "#0B66C2", marginRight: "15px" }}
                 class="fab fa-linkedin-in fa-lg"
               ></i>
-            </a>
-            <a href="#">
+           </span>
+           <span>
               <i
                 style={{ color: "#DE4F41", marginRight: "15px" }}
                 class="fab fa-google-plus-g fa-lg"
               ></i>
-            </a>
-            <a href="#">
+           </span>
+           <span>
               <i style={{ color: "black" }} class="fab fa-github fa-lg"></i>
-            </a>
+              </span>
           </div>
         </form>
       </div>

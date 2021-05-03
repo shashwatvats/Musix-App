@@ -15,7 +15,7 @@ function Header(props) {
     <div>
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <span class="navbar-brand">
             <img
               src="/docs/5.0/assets/brand/bootstrap-logo.svg"
               alt=""
@@ -23,8 +23,8 @@ function Header(props) {
               height="24"
               class="d-inline-block align-text-top"
             ></img>
-            Navbar
-          </a>
+            Musix
+          </span>
           <button
             class="navbar-toggler"
             type="button"
@@ -70,15 +70,3 @@ function Header(props) {
 export default Header;
 
 
-{/* <NavLink
-                  exact
-                  className="nav-link btn btn-primary"
-                  to="/login"
-                  
-                >
-                  Login/Sign Up 
-                </NavLink> */}
-
-{/* <li class="nav-item">
-                <Button className="nav-link" type="contained" color="primary" onClick={()=>{props.setmodalOpen(true); props.settype("register")}}>SignUp <i class="fas fa-sign-in-alt"></i></Button>
-              </li> */}

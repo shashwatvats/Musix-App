@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Slider from '../Slider/Slider';
 import Carousel from "react-bootstrap/Carousel";
-import Paper from '@material-ui/core/Paper'
 import "./Dashboard.css";
-import Favourites from '../Favourites/Favourites';
 import SliderAlbum from "../SliderAlbum/SliderAlbum";
-import { TrainRounded } from '@material-ui/icons';
+import FavouriteSlider from '../FavouriteSlider/FavouriteSlider';
 export const DashboardContext = React.createContext();
+
 
 
 function Dashboard() {
@@ -15,6 +14,7 @@ function Dashboard() {
   const [loading, setloading] = useState(true);
   const [screenSize, setscreenSize] = useState(window.innerWidth);
   const [mainCarasoulplaybutton, setmainCarasoulplaybutton] = useState({});
+  const [favourites, setfavourites] = useState([]);
   useEffect(() => {
     fetch("https://api.napster.com/v2.2/playlists?limit=5&apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4")
       .then(res => res.json())
@@ -33,9 +33,23 @@ function Dashboard() {
         settracks(data.tracks);
       });
   }, []);
+
+
+  useEffect(() => {
+    fetch("http://localhost:4000/favourites")
+      .then(res => res.json())
+      .then(favouritess => {
+        setfavourites(favouritess.filter(favourite => favourite.email == localStorage.getItem('email')));
+      })
+
+  }, [favourites]);
+
   window.onresize = function () {
     setscreenSize(window.innerWidth);
   }
+
+  let favouriteSongsIds =  favourites.map(favourite=>favourite.id);
+
   return (
 
     loading ? "" : <div class="container">
@@ -55,22 +69,22 @@ function Dashboard() {
 
               </audio>
               <div>
-              {mainCarasoulplaybutton[item.id] ? <i  style={{cursor:'pointer'}} onClick={() => { document.getElementById(`main-carasoul-play-${item.id}`).pause(); setmainCarasoulplaybutton(prevState => {return {...prevState, [item.id]:false}}) }} class="far fa-pause-circle fa-3x"></i> :
-                                                <i  style={{cursor:'pointer'}} onClick={() => { document.getElementById(`main-carasoul-play-${item.id}`).play(); setmainCarasoulplaybutton(prevState => {return {...prevState, [item.id]:true}}) }} class="far fa-play-circle fa-3x"></i>
-                                            }
-               
+                {mainCarasoulplaybutton[item.id] ? <i style={{ cursor: 'pointer' }} onClick={() => { document.getElementById(`main-carasoul-play-${item.id}`).pause(); setmainCarasoulplaybutton(prevState => { return { ...prevState, [item.id]: false } }) }} class="far fa-pause-circle fa-3x"></i> :
+                  <i style={{ cursor: 'pointer' }} onClick={() => { document.getElementById(`main-carasoul-play-${item.id}`).play(); setmainCarasoulplaybutton(prevState => { return { ...prevState, [item.id]: true } }) }} class="far fa-play-circle fa-3x"></i>
+                }
+
               </div>
-            
+
               <h4>{item.name}</h4>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
       </Carousel>
       <DashboardContext.Provider value={screenSize}>
-        <Favourites />
+        <FavouriteSlider favourites={favourites} />
       </DashboardContext.Provider>
       <SliderAlbum screenSize={screenSize} />
-      {playlists.map(playlist => <Slider screenSize={screenSize} key={playlist.id} playlist={playlist} />)}
+      {playlists.map(playlist => <Slider screenSize={screenSize} key={playlist.id} playlist={playlist} favouriteSongsIds={favouriteSongsIds} />)}
 
       {/* <Slider playlist={playlists[0]} screenSize={screenSize} />
           <Slider playlist={playlists[1]}  screenSize={screenSize} /> */}

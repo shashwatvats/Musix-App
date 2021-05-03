@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
-function SliderAlbum(props) {
+function SliderArtist(props) {
   const { screenSize } = props;
-  const [albums, setalbums] = useState([]);
+  const [artists, setartists] = useState([]);
   let arr = [];
   useEffect(() => {
     fetch(
-      "http://api.napster.com/v2.2/albums/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=12"
+      "http://api.napster.com/v2.2/artists/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=12"
     )
       .then((res) => res.json())
       .then((data) => {
-        setalbums(data.albums);
+        setartists(data.artists);
       });
   }, []);
 
@@ -27,18 +27,18 @@ function SliderAlbum(props) {
         arr.push(
           <div class={`carousel-item ${active}`}>
             <div className="row">
-              {albums.slice(i, i + carouselsize[j]).map((album) => (
+              {artists.slice(i, i + carouselsize[j]).map((artist) => (
                 <div class="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
-                  <Link to={`/albums/${album.id}`}>
+                  <Link to={`/artists/${artist.id}`}>
                     <img
-                      src={`https://api.napster.com/imageserver/v2/albums/${album.id}/images/500x500.jpg`}
+                      src={`https://api.napster.com/imageserver/v2/artists/${artist.id}/images/500x500.jpg`}
                       className="card-img-top"
-                      style={{ borderRadius: "12px" }}
+                      style={{ borderRadius: "40% 40% " }}
                       alt="..."
                     />
                   </Link>
                   <div className="card-body">
-                    <h5 className="card-title">{album.name}</h5>
+                    <h5 className="card-title">{artist.name}</h5>
                   </div>
                 </div>
               ))}
@@ -52,9 +52,9 @@ function SliderAlbum(props) {
 
   return (
     <Paper className="mb-3" elevation={7} style={{ padding: "10px" }}>
-      <div className="h4 text-danger">Albums</div>
+      <div className="h4 text-danger">Artists</div>
       <div
-        id="album"
+        id="artist"
         class="carousel slide carousel-fade"
         // data-bs-ride="carousel"
         data-interval="false"
@@ -65,7 +65,7 @@ function SliderAlbum(props) {
           class="carousel-control-prev"
           type="button"
           style={{ height: "50%", width: "5%" }}
-          data-bs-target="#album"
+          data-bs-target="#artist"
           data-bs-slide="prev"
         >
           <span
@@ -79,7 +79,7 @@ function SliderAlbum(props) {
           class="carousel-control-next"
           type="button"
           style={{ height: "50%", width: "5%" }}
-          data-bs-target="#album"
+          data-bs-target="#artist"
           data-bs-slide="next"
         >
           <span
@@ -94,4 +94,4 @@ function SliderAlbum(props) {
   );
 }
 
-export default SliderAlbum;
+export default SliderArtist;

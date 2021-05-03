@@ -10,6 +10,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Album from "./Components/Album/Album";
+import Artist from "./Components/Artist/Artist";
 
 function App() {
   function Alert(props) {
@@ -97,8 +98,18 @@ function App() {
             <Route
               exact
               path="/albums/:albumId"
-              component={Album}
-              // render={(props) => (isLoggedIn ? <Album {...props}/> : <Redirect to="/" />)}
+              // component={Album}
+              render={(props) =>
+                isLoggedIn ? <Album {...props} /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/artists/:artistId"
+              // component={Album}
+              render={(props) =>
+                isLoggedIn ? <Artist {...props} /> : <Redirect to="/" />
+              }
             />
           </Switch>
           <Modal

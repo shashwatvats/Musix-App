@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
-function AlbumDisplay(props) {
-  const { album } = props;
+function ArtistDisplay(props) {
+  const { artist } = props;
   const [songs, setsongs] = useState([]);
   const [playbutton, setplaybutton] = useState({});
 
   useEffect(() => {
     fetch(
-      `${album.links.tracks.href}?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4`
+      `${artist.links.topTracks.href}?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4`
     )
       .then((res) => res.json())
       .then((data) => setsongs(data.tracks));
@@ -20,42 +19,28 @@ function AlbumDisplay(props) {
           <div className="col-12  col-md-4">
             <img
               className="img-fluid"
-              src={`https://api.napster.com/imageserver/v2/albums/${album.id}/images/500x500.jpg`}
+              src={`https://api.napster.com/imageserver/v2/artists/${artist.id}/images/500x500.jpg`}
               alt="..."
-              style={{ borderRadius: "25px" }}
+              style={{ borderRadius: "50px" }}
             />
 
-            <div>
-              <p className="h4 mt-4">Featured Artist</p>
-              <div className="d-flex align-items-center">
-                <Link exact to={`/artists/${album.links.artists.ids[0]}`}>
-                  <img
-                    src={`https://api.napster.com/imageserver/v2/artists/${album.links.artists.ids[0]}/images/170x170.jpg`}
-                    alt="..."
-                    style={{
-                      height: "100px",
-                      width: "100px",
-                      borderRadius: "50%",
-                    }}
-                    className="me-2"
-                  />
-                </Link>
-
-                <div className="d-flex flex-column">
-                  <p className="mt-2 h5">{album.artistName}</p>
-                  <p className="text-secondary">Singer</p>
-                </div>
-              </div>
+            <div className="d-flex flex-column mt-3">
+              <p className="mt-2 h5">{artist.name}</p>
+              <p className="text-secondary">Singer</p>
+            </div>
+            <div className="d-flex" style={{fontFamily:"monospace"}}>
+              <div>{artist.bios? artist.bios[0].bio.replace(/(<([^>]+)>)/gi, ""):""}</div>
             </div>
           </div>
+
           <div className="col-md-1"></div>
           <div className="col-12  col-md-7">
-            <p className="h2">{album.name}</p>
-            <p>{album.label}</p>
+            <p className="h2">{artist.name}</p>
+            <p>{artist.label}</p>
             {songs.map((song) => (
               <div className="d-flex align-content-center p-2 mb-1">
                 <img
-                  src={`https://api.napster.com/imageserver/v2/albums/${album.id}/images/70x70.jpg`}
+                  src={`https://api.napster.com/imageserver/v2/albums/${song.albumId}/images/70x70.jpg`}
                   alt="..."
                   style={{ borderRadius: "5px" }}
                   className="me-2"
@@ -63,13 +48,15 @@ function AlbumDisplay(props) {
                 <div>
                   <audio
                     src={song.previewURL}
-                    id={`albumPlay-${song.id}`}
+                    id={`artistPlay-${song.id}`}
                   ></audio>
 
                   {playbutton[song.id] ? (
                     <i
                       onClick={() => {
-                        document.getElementById(`albumPlay-${song.id}`).pause();
+                        document
+                          .getElementById(`artistPlay-${song.id}`)
+                          .pause();
                         setplaybutton((prevState) => {
                           return { ...prevState, [song.id]: false };
                         });
@@ -79,7 +66,7 @@ function AlbumDisplay(props) {
                   ) : (
                     <i
                       onClick={() => {
-                        document.getElementById(`albumPlay-${song.id}`).play();
+                        document.getElementById(`artistPlay-${song.id}`).play();
                         setplaybutton((prevState) => {
                           return { ...prevState, [song.id]: true };
                         });
@@ -102,4 +89,4 @@ function AlbumDisplay(props) {
   );
 }
 
-export default AlbumDisplay;
+export default ArtistDisplay;

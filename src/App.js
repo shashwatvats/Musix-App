@@ -9,6 +9,7 @@ import Register from "./Components/Register/Register";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import Album from "./Components/Album/Album";
 
 function App() {
   function Alert(props) {
@@ -31,46 +32,74 @@ function App() {
 
   let component = "";
   if (type == "login")
-    component = <Login setsnackMessage={setsnackMessage}
-      setsnackOpen={setsnackOpen}
-      setseverity={setseverity}
-      setmodalOpen={setmodalOpen}
-      settype={settype}
-      setisLoggedIn={setisLoggedIn}
-      // setfirstName={setfirstName}
-    />
+    component = (
+      <Login
+        setsnackMessage={setsnackMessage}
+        setsnackOpen={setsnackOpen}
+        setseverity={setseverity}
+        setmodalOpen={setmodalOpen}
+        settype={settype}
+        setisLoggedIn={setisLoggedIn}
+        // setfirstName={setfirstName}
+      />
+    );
   else if (type == "register")
-    component = <Register setsnackMessage={setsnackMessage}
-      setsnackOpen={setsnackOpen}
-      setseverity={setseverity}
-      setmodalOpen={setmodalOpen}
-      settype={settype}
-    />
+    component = (
+      <Register
+        setsnackMessage={setsnackMessage}
+        setsnackOpen={setsnackOpen}
+        setseverity={setseverity}
+        setmodalOpen={setmodalOpen}
+        settype={settype}
+      />
+    );
 
   useEffect(() => {
     fetch("http://localhost:9000/auth/isAuthenticated", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    }).then(res => res.json())
-      .then(data => {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
         if (data.isAuthenticated) {
           setisLoggedIn(true);
         }
       });
-  }, [])
+  }, []);
   return (
     <div>
       <BrowserRouter>
         <div style={{ width: "100vw", height: "10vh" }}>
-          <Header setmodalOpen={setmodalOpen} settype={settype} isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
+          <Header
+            setmodalOpen={setmodalOpen}
+            settype={settype}
+            isLoggedIn={isLoggedIn}
+            setisLoggedIn={setisLoggedIn}
+          />
         </div>
         <div style={{ width: "100vw", height: "90vh", overflow: "auto" }}>
           <Switch>
-            <Route exact path="/dashboard" render={() => isLoggedIn ? <Dashboard /> : <Redirect to="/" /> } />
-            <Route exact path="/" render={() => isLoggedIn ? <Redirect to="/dashboard" /> : <Home /> } />
+            <Route
+              exact
+              path="/dashboard"
+              render={() => (isLoggedIn ? <Dashboard /> : <Redirect to="/" />)}
+            />
+            <Route
+              exact
+              path="/"
+              render={() =>
+                isLoggedIn ? <Redirect to="/dashboard" /> : <Home />
+              }
+            />
+            <Route
+              exact
+              path="/albums/:albumId"
+              component={Album}
+              // render={(props) => (isLoggedIn ? <Album {...props}/> : <Redirect to="/" />)}
+            />
           </Switch>
           <Modal
             open={modalOpen}
@@ -79,7 +108,6 @@ function App() {
             }}
           >
             {component}
-
           </Modal>
         </div>
       </BrowserRouter>
@@ -98,5 +126,3 @@ function App() {
 }
 
 export default App;
-
-

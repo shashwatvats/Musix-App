@@ -40,6 +40,7 @@ function Login(props) {
             props.setmodalOpen(false);
             // props.setfirstName(data.userData.firstname);
             localStorage.setItem("firstName",data.userData.firstname);
+            localStorage.setItem("email",data.userData.email);
             return;
           }
             props.setseverity("error");

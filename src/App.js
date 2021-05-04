@@ -11,6 +11,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Album from "./Components/Album/Album";
 import Artist from "./Components/Artist/Artist";
+import Genre from "./Components/Genre/Genre";
 
 function App() {
   function Alert(props) {
@@ -109,6 +110,14 @@ function App() {
               // component={Album}
               render={(props) =>
                 isLoggedIn ? <Artist {...props} /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/genres/:genreId"
+              // component={Album}
+              render={(props) =>
+                isLoggedIn ? <Genre {...props} /> : <Redirect to="/" />
               }
             />
           </Switch>

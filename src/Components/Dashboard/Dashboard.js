@@ -5,6 +5,7 @@ import "./Dashboard.css";
 import SliderAlbum from "../SliderAlbum/SliderAlbum";
 import FavouriteSlider from "../FavouriteSlider/FavouriteSlider";
 import SliderArtist from "../SliderArtist/SliderArtist";
+import SliderGenre from "../SliderGenre/SliderGenre";
 export const DashboardContext = React.createContext();
 
 function Dashboard() {
@@ -43,14 +44,12 @@ function Dashboard() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/favourites")
+    fetch(
+      `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
+    )
       .then((res) => res.json())
       .then((favouritess) => {
-        setfavourites(
-          favouritess.filter(
-            (favourite) => favourite.email == localStorage.getItem("email")
-          )
-        );
+        setfavourites(favouritess);
       });
   }, [favourites]);
 
@@ -119,6 +118,7 @@ function Dashboard() {
       <DashboardContext.Provider value={screenSize}>
         <FavouriteSlider favourites={favourites} />
       </DashboardContext.Provider>
+      <SliderGenre screenSize={screenSize} />
       <SliderArtist screenSize={screenSize} />
       <SliderAlbum screenSize={screenSize} />
       {playlists.map((playlist) => (

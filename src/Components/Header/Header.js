@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 function Header(props) {
   let history = useHistory();
@@ -13,17 +13,18 @@ function Header(props) {
 
   return (
     <div>
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
+      <nav style={{zIndex:2}} class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
         <div class="container-fluid">
           <span class="navbar-brand">
             <img
-              src="/docs/5.0/assets/brand/bootstrap-logo.svg"
+              src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200"
               alt=""
-              width="30"
-              height="24"
-              class="d-inline-block align-text-top"
+              width="34"
+              height="34"
+              style={{ borderRadius: "50%" }}
+              class="d-inline-block align-text-top me-2"
             ></img>
-            Musix
+            Musix App
           </span>
           <button
             class="navbar-toggler"
@@ -43,22 +44,46 @@ function Header(props) {
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <NavLink className="nav-link" exact to="/">Home</NavLink>
+                <NavLink activeStyle={{fontWeight:'bold'}} className="nav-link"  to="/">
+                  Home
+                </NavLink>
               </li>
-              {props.isLoggedIn ?  <li className="nav-item"><span class="nav-link">{localStorage.getItem('firstName')}</span> </li>
-              :
-                <li class="nav-item">
-                  <Button className="nav-link" variant="contained" color="primary" onClick={() => { props.setmodalOpen(true); props.settype("login") }}>LogIn/SignUp <i class="fas fa-sign-in-alt"></i></Button>
+              {props.isLoggedIn ? (
+                <li className="nav-item">
+                  <span class="nav-link">
+                    Welcome,<b>{localStorage.getItem("firstName")}</b>
+                  </span>{" "}
                 </li>
-              }
+              ) : (
+                <li class="nav-item">
+                  <Button
+                    className="nav-link"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      props.setmodalOpen(true);
+                      props.settype("login");
+                    }}
+                  >
+                    LogIn/SignUp <i class="fas fa-sign-in-alt"></i>
+                  </Button>
+                </li>
+              )}
 
-              {props.isLoggedIn ? <li className="nav-item">
-                 <Button className="nav-link" variant="contained" color="primary" onClick={logOutHandler}>LogOut <i class="fas fa-sign-in-alt"></i></Button>
-              </li> : "" }
-
-
-
-
+              {props.isLoggedIn ? (
+                <li className="nav-item">
+                  <Button
+                    className="nav-link"
+                    variant="contained"
+                    color="primary"
+                    onClick={logOutHandler}
+                  >
+                    LogOut <i class="fas fa-sign-in-alt"></i>
+                  </Button>
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
           </div>
         </div>
@@ -68,5 +93,3 @@ function Header(props) {
 }
 
 export default Header;
-
-

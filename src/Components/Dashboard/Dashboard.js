@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Slider from "../Slider/Slider";
+import SliderPlaylist from "../SliderPlaylist/SliderPlaylist";
 import Carousel from "react-bootstrap/Carousel";
 import "./Dashboard.css";
 import SliderAlbum from "../SliderAlbum/SliderAlbum";
 import FavouriteSlider from "../FavouriteSlider/FavouriteSlider";
 import SliderArtist from "../SliderArtist/SliderArtist";
 import SliderGenre from "../SliderGenre/SliderGenre";
-export const DashboardContext = React.createContext();
 
 function Dashboard() {
   const [playlists, setplaylists] = useState([]);
   const [tracks, settracks] = useState([]);
   const [loading, setloading] = useState(true);
-  const [screenSize, setscreenSize] = useState(window.innerWidth);
+
   const [mainCarasoulplaybutton, setmainCarasoulplaybutton] = useState({});
   const [favourites, setfavourites] = useState([]);
+
   useEffect(() => {
     fetch(
       "https://api.napster.com/v2.2/playlists?limit=5&apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4"
@@ -53,9 +53,7 @@ function Dashboard() {
       });
   }, [favourites]);
 
-  window.onresize = function () {
-    setscreenSize(window.innerWidth);
-  };
+ 
 
   let favouriteSongsIds = favourites.map((favourite) => favourite.id);
 
@@ -115,20 +113,20 @@ function Dashboard() {
           </Carousel.Item>
         ))}
       </Carousel>
-      <DashboardContext.Provider value={screenSize}>
-        <FavouriteSlider favourites={favourites} />
-      </DashboardContext.Provider>
-      <SliderGenre screenSize={screenSize} />
-      <SliderArtist screenSize={screenSize} />
-      <SliderAlbum screenSize={screenSize} />
-      {playlists.map((playlist) => (
-        <Slider
-          screenSize={screenSize}
-          key={playlist.id}
-          playlist={playlist}
-          favouriteSongsIds={favouriteSongsIds}
-        />
-      ))}
+            <FavouriteSlider favourites={favourites} />
+
+        <SliderGenre  />
+        <SliderArtist />
+        <SliderAlbum  />
+        {playlists.map((playlist) => (
+          <SliderPlaylist
+            key={playlist.id}
+            playlist={playlist}
+            favouriteSongsIds={favouriteSongsIds}
+          />
+        ))}
+
+
 
       {/* <Slider playlist={playlists[0]} screenSize={screenSize} />
           <Slider playlist={playlists[1]}  screenSize={screenSize} /> */}

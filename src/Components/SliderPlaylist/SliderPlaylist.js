@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from "react";
 import Paper from '@material-ui/core/Paper';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import './Slider.css';
+import  {} from "../Dashboard/Dashboard"; 
+import { AppContext } from '../../App';
 
-function Slider(props) {
+
+function SliderPlaylist(props) {
     // const [screenSize, setscreenSize] = useState(window.innerWidth);
+    const screenSize = useContext(AppContext);
     const [songs, setsongs] = useState([]);
     const [loading, setloading] = useState(true);
-    const { playlist, screenSize , favouriteSongsIds} = props;
+    const { playlist , favouriteSongsIds} = props;
     const [playbutton, setplaybutton] = useState({});
 
     let arr = [];
@@ -136,4 +139,4 @@ function Slider(props) {
     )
 }
 
-export default Slider;
+export default SliderPlaylist;

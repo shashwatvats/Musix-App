@@ -13,7 +13,7 @@ function Artist(props) {
       .then((data) => {
         setartist(data.artists[0]);
         setloading(false);
-        console.log(data.artists[0]);
+       
       });
   }, []);
   return loading ? (

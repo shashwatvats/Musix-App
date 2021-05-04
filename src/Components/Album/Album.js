@@ -13,7 +13,6 @@ function Album(props) {
       .then((data) => {
         setalbum(data.albums[0]);
         setloading(false);
-        console.log(data.albums[0]);
       });
   }, []);
   return (

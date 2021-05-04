@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../App";
 function SliderAlbum(props) {
-  const { screenSize } = props;
   const [albums, setalbums] = useState([]);
+  const screenSize = useContext(AppContext);
   let arr = [];
   useEffect(() => {
     fetch(

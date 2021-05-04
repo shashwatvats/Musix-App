@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { DashboardContext } from '../Dashboard/Dashboard';
 import Paper from '@material-ui/core/Paper';
-import '../Slider/Slider.css';
+import { AppContext } from '../../App';
+
 
 function FavouriteSlider(props) {
     const [playbutton, setplaybutton] = useState({});
-    const screenSize = useContext(DashboardContext);
+    const screenSize = useContext(AppContext);
     let arr = [];
     const { favourites } = props;
 

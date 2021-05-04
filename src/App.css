@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,21 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.slide-container {
+  position: relative;
+}
+
+.slide-container .btn {
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  color: black;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.slide-container .btn:hover {
+  opacity: 1;
 }

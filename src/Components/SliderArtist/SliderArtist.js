@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../App";
 function SliderArtist(props) {
-  const { screenSize } = props;
+  const screenSize = useContext(AppContext);
   const [artists, setartists] = useState([]);
   let arr = [];
   useEffect(() => {

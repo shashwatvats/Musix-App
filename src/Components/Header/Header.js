@@ -15,7 +15,9 @@ function Header(props) {
     <div>
       <nav style={{zIndex:2}} class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
         <div class="container-fluid">
+        <NavLink exact activeStyle={{fontWeight:'bold'}} className="nav-link"  to="/">
           <span class="navbar-brand">
+         
             <img
               src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=200"
               alt=""
@@ -26,6 +28,7 @@ function Header(props) {
             ></img>
             Musix App
           </span>
+          </NavLink>
           <button
             class="navbar-toggler"
             type="button"
@@ -44,8 +47,14 @@ function Header(props) {
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <NavLink activeStyle={{fontWeight:'bold'}} className="nav-link"  to="/">
+                {props.isLoggedIn ? 
+                <NavLink exact activeStyle={{fontWeight:'bold'}} className="nav-link"  to="/dashboard">
                   Home
+                </NavLink> : ""}
+              </li>
+              <li class="nav-item">
+                <NavLink exact activeStyle={{fontWeight:'bold'}} className="nav-link"  to="/search">
+                  Search
                 </NavLink>
               </li>
               {props.isLoggedIn ? (

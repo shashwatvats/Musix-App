@@ -12,11 +12,22 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Album from "./Components/Album/Album";
 import Artist from "./Components/Artist/Artist";
 import Genre from "./Components/Genre/Genre";
+import Search from "./Components/Search/Search";
+export const AppContext = React.createContext();
+
 
 function App() {
+  const [screenSize, setscreenSize] = useState(window.innerWidth);
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
+
+
+
+  window.onresize = function () {
+    setscreenSize(window.innerWidth);
+  };
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -42,7 +53,7 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-        // setfirstName={setfirstName}
+      // setfirstName={setfirstName}
       />
     );
   else if (type == "register")
@@ -82,6 +93,8 @@ function App() {
             setisLoggedIn={setisLoggedIn}
           />
         </div>
+        <AppContext.Provider value={screenSize}>
+
         <div style={{ width: "100vw", height: "90vh", overflow: "auto" }}>
           <Switch>
             <Route
@@ -120,6 +133,12 @@ function App() {
                 isLoggedIn ? <Genre {...props} /> : <Redirect to="/" />
               }
             />
+
+            <Route
+              exact
+              path="/search"
+              component={Search}
+            />
           </Switch>
           <Modal
             open={modalOpen}
@@ -130,6 +149,7 @@ function App() {
             {component}
           </Modal>
         </div>
+        </AppContext.Provider>
       </BrowserRouter>
       <Snackbar
         open={snackOpen}

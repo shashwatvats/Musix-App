@@ -53,3 +53,14 @@
 .slide-container .btn:hover {
   opacity: 1;
 }
+.mainCarousel:hover {
+  filter: brightness(50%);
+  border: 2px solid;
+  /* opacity: 0.3; */
+}
+.sliderGenreImg:hover {
+  filter: brightness(60%);
+}
+.carasoulbtn:hover {
+  color: red;
+}

@@ -15,14 +15,11 @@ import Genre from "./Components/Genre/Genre";
 import Search from "./Components/Search/Search";
 export const AppContext = React.createContext();
 
-
 function App() {
   const [screenSize, setscreenSize] = useState(window.innerWidth);
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
-
-
 
   window.onresize = function () {
     setscreenSize(window.innerWidth);
@@ -53,7 +50,7 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-      // setfirstName={setfirstName}
+        // setfirstName={setfirstName}
       />
     );
   else if (type == "register")
@@ -85,7 +82,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div style={{ width: "100vw", height: "10vh" }}>
+        <div style={{ width: "100vw", height: "11vh" }}>
           <Header
             setmodalOpen={setmodalOpen}
             settype={settype}
@@ -94,61 +91,44 @@ function App() {
           />
         </div>
         <AppContext.Provider value={screenSize}>
-
-        <div style={{ width: "100vw", height: "90vh", overflow: "auto" }}>
-          <Switch>
-            <Route
-              exact
-              path="/dashboard"
-              render={() => (isLoggedIn ? <Dashboard /> : <Redirect to="/" />)}
-            />
-            <Route
-              exact
-              path="/"
-              render={() =>
-                isLoggedIn ? <Redirect to="/dashboard" /> : <Home />
-              }
-            />
-            <Route
-              exact
-              path="/albums/:albumId"
-              // component={Album}
-              render={(props) =>
-                isLoggedIn ? <Album {...props} /> : <Redirect to="/" />
-              }
-            />
-            <Route
-              exact
-              path="/artists/:artistId"
-              // component={Album}
-              render={(props) =>
-                isLoggedIn ? <Artist {...props} /> : <Redirect to="/" />
-              }
-            />
-            <Route
-              exact
-              path="/genres/:genreId"
-              // component={Album}
-              render={(props) =>
-                isLoggedIn ? <Genre {...props} /> : <Redirect to="/" />
-              }
-            />
-
-            <Route
-              exact
-              path="/search"
-              component={Search}
-            />
-          </Switch>
-          <Modal
-            open={modalOpen}
-            handleClose={() => {
-              setmodalOpen(false);
+          <div
+            style={{
+              width: "100vw",
+              height: "89vh",
+              overflow: "auto",
+             backgroundColor:"maroon"
             }}
           >
-            {component}
-          </Modal>
-        </div>
+            <Switch>
+              <Route
+                exact
+                path="/dashboard"
+                render={() =>
+                  isLoggedIn ? <Dashboard /> : <Redirect to="/" />
+                }
+              />
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  isLoggedIn ? <Redirect to="/dashboard" /> : <Home />
+                }
+              />
+              <Route exact path="/albums/:albumId" component={Album} />
+              <Route exact path="/artists/:artistId" component={Artist} />
+              <Route exact path="/genres/:genreId" component={Genre} />
+
+              <Route exact path="/search" component={Search} />
+            </Switch>
+            <Modal
+              open={modalOpen}
+              handleClose={() => {
+                setmodalOpen(false);
+              }}
+            >
+              {component}
+            </Modal>
+          </div>
         </AppContext.Provider>
       </BrowserRouter>
       <Snackbar

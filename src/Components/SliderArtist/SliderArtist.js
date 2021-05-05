@@ -33,7 +33,7 @@ function SliderArtist(props) {
                   <Link to={`/artists/${artist.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/v2/artists/${artist.id}/images/500x500.jpg`}
-                      className="card-img-top"
+                      className="card-img-top sliderGenreImg"
                       style={{ borderRadius: "40% 40% " }}
                       alt="..."
                     />

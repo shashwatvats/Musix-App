@@ -33,7 +33,7 @@ function SliderGenre(props) {
                   <Link to={`/genres/${genre.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/images/${genre.id}/240x160.jpg`}
-                      className="card-img-top"
+                      className="card-img-top sliderGenreImg"
                       style={{ borderRadius: "12px" }}
                       alt="..."
                     />

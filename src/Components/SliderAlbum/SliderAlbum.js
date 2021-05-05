@@ -33,7 +33,7 @@ function SliderAlbum(props) {
                   <Link to={`/albums/${album.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/v2/albums/${album.id}/images/500x500.jpg`}
-                      className="card-img-top"
+                      className="card-img-top sliderGenreImg"
                       style={{ borderRadius: "12px" }}
                       alt="..."
                     />

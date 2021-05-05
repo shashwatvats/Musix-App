@@ -65,44 +65,52 @@ function FavouriteSlider(props) {
     carouselSlider();
 
     return (
-        <Paper className="mb-3" elevation={7} style={{ padding: '10px' }}>
-            <div className="h4 text-danger">
-                Favourite Songs
+      <Paper className="mb-3" elevation={7} style={{ padding: "10px" }}>
+        <div className="h4 text-danger">Favourite Songs</div>
+        <div
+          id="favourites"
+          class="carousel slide carousel-fade"
+          // data-bs-ride="carousel"
+          data-interval="false"
+        >
+          <div class="carousel-inner">{arr}</div>
+          {favourites.length ? (
+            <div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#favourites"
+                style={{ height: "50%", width: "5%" }}
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon rounded-circle"
+                  aria-hidden="true"
+                  style={{ backgroundColor: "rgba(0,0,0,.6)" }}
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#favourites"
+                style={{ height: "50%", width: "5%" }}
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon rounded-circle"
+                  style={{ backgroundColor: "rgba(0,0,0,.6)" }}
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
-            <div
-                id="favourites"
-                class="carousel slide carousel-fade"
-                // data-bs-ride="carousel"
-                data-interval="false"
-            >
-                <div class="carousel-inner">
-                    {arr}
-                </div>
-
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#favourites"
-                    style={{ height: '50%', width: '5%' }}
-                    data-bs-slide="prev"
-                >
-                    <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true" style={{ backgroundColor: 'rgba(0,0,0,.6)' }}></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#favourites"
-                    style={{ height: '50%', width: '5%' }}
-                    data-bs-slide="next"
-                >
-                    <span class="carousel-control-next-icon rounded-circle" style={{ backgroundColor: 'rgba(0,0,0,.6)' }} aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-        </Paper>
-    )
+          ) : (
+            ""
+          )}
+        </div>
+      </Paper>
+    );
 }
 
 export default FavouriteSlider

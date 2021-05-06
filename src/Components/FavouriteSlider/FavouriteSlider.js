@@ -28,10 +28,10 @@ function FavouriteSlider(props) {
                 for (let i = 0; i < favourites.length; i += carouselsize[j]) {
                     if (i !== 0)
                         active = "";
-                    arr.push(<div className={`carousel-item ${active}`}>
+                    arr.push(<div key={i} className={`carousel-item ${active}`}>
                         <div className="row">
                             {favourites.slice(i, i + carouselsize[j]).map(favouriteSong =>
-                                <div className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container">
+                                <div key={favouriteSong.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container">
                                     <img src={`https://api.napster.com/imageserver/v2/albums/${favouriteSong.albumId}/images/500x500.jpg`}
                                         className="card-img-top"
                                         style={{ borderRadius: '12px' }}

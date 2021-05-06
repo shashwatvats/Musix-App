@@ -69,7 +69,7 @@ function Dashboard() {
         style={{ width: "100%" }}
       >
         {tracks.map((item) => (
-          <Carousel.Item>
+          <Carousel.Item key={item.id}>
             <img
               style={{ objectFit: "cover", borderRadius: "15px" }}
               className="d-block w-100"

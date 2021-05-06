@@ -12,10 +12,7 @@ function Search(props) {
   const [searchData, setsearchData] = useState({});
   const [loading, setloading] = useState(false);
 
-
-
   const queryHandler = (e) => {
-    
     if (types.length === 0 || query === "") {
       props.setseverity("error");
       props.setsnackOpen(true);
@@ -45,14 +42,15 @@ function Search(props) {
       <div className=" d-flex justify-content-around flex-wrap">
         <div>
           <MultiSelect
+            id="MultiselectCypress"
             types={types}
             handleChange={(e) => multiSelecthandler(e)}
           />
-
         </div>
         <div className="form-group d-flex align-items-center  mt-2 col-md-4">
           <input
             type="search"
+            id="queryCypress"
             className="form-control col-md-3"
             placeholder="Query"
             value={query}
@@ -63,21 +61,27 @@ function Search(props) {
 
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary searchCypress"
             onClick={queryHandler}
           >
             <i className="fas fa-search"></i>
           </button>
         </div>
       </div>
-      {loading ? <Spinner /> :
+      {loading ? (
+        <Spinner />
+      ) : (
         <div>
           {searchData.tracks ? (
             <div>
               <h2>Tracks</h2>
               <div className="d-flex justify-content-around mb-2 mt-2 slide-container flex-wrap">
                 {searchData.tracks.map((track) => (
-                  <Card key={track.id} className="m-2 p-0" style={{ width: "12rem" }}>
+                  <Card
+                    key={track.id}
+                    className="m-2 p-0"
+                    style={{ width: "12rem" }}
+                  >
                     <Card.Img
                       variant="top"
                       className="img-fluid"
@@ -91,7 +95,9 @@ function Search(props) {
                     {playbutton[track.id] ? (
                       <i
                         onClick={() => {
-                          document.getElementById(`trackPlay-${track.id}`).pause();
+                          document
+                            .getElementById(`trackPlay-${track.id}`)
+                            .pause();
                           setplaybutton((prevState) => {
                             return { ...prevState, [track.id]: false };
                           });
@@ -101,7 +107,9 @@ function Search(props) {
                     ) : (
                       <i
                         onClick={() => {
-                          document.getElementById(`trackPlay-${track.id}`).play();
+                          document
+                            .getElementById(`trackPlay-${track.id}`)
+                            .play();
                           setplaybutton((prevState) => {
                             return { ...prevState, [track.id]: true };
                           });
@@ -114,21 +122,21 @@ function Search(props) {
                     </Card.Body>
                   </Card>
                 ))}
-
               </div>
             </div>
           ) : (
             ""
-          )
-          }
+          )}
           {searchData.artists ? (
             <div>
               <h2>Artists</h2>
               <div className="d-flex justify-content-around mb-2 mt-2 flex-wrap">
-
-
                 {searchData.artists.map((artist) => (
-                  <Card key={artist.id} className="m-2 p-0" style={{ width: "12rem" }}>
+                  <Card
+                    key={artist.id}
+                    className="m-2 p-0"
+                    style={{ width: "12rem" }}
+                  >
                     <Link exact to={`/artists/${artist.id}`}>
                       <Card.Img
                         variant="top"
@@ -139,10 +147,8 @@ function Search(props) {
                     <Card.Body>
                       <Card.Title>{artist.name}</Card.Title>
                     </Card.Body>
-
                   </Card>
                 ))}
-
               </div>
             </div>
           ) : (
@@ -152,10 +158,12 @@ function Search(props) {
             <div>
               <h2>Albums</h2>
               <div className="d-flex justify-content-around mb-2 mt-2 flex-wrap">
-
-
                 {searchData.albums.map((album) => (
-                  <Card key={album.id} className="m-2 p-0" style={{ width: "12rem" }}>
+                  <Card
+                    key={album.id}
+                    className="m-2 p-0"
+                    style={{ width: "12rem" }}
+                  >
                     <Link exact to={`/albums/${album.id}`}>
                       <Card.Img
                         variant="top"
@@ -166,10 +174,8 @@ function Search(props) {
                     <Card.Body>
                       <Card.Title>{album.name}</Card.Title>
                     </Card.Body>
-
                   </Card>
                 ))}
-
               </div>
             </div>
           ) : (
@@ -179,10 +185,12 @@ function Search(props) {
             <div>
               <h2>Playlists</h2>
               <div className="d-flex justify-content-around mb-2 mt-2 flex-wrap">
-
-
                 {searchData.playlists.map((playlist) => (
-                  <Card  key={playlist.id} className="m-2 p-0" style={{ width: "12rem" }}>
+                  <Card
+                    key={playlist.id}
+                    className="m-2 p-0"
+                    style={{ width: "12rem" }}
+                  >
                     <Card.Img
                       variant="top"
                       src={`${playlist.images[0].url}`}
@@ -193,19 +201,15 @@ function Search(props) {
                     </Card.Body>
                   </Card>
                 ))}
-
               </div>
             </div>
           ) : (
             ""
-          )} </div>
-      }
-
-
+          )}{" "}
+        </div>
+      )}
     </div>
-
   );
-
 }
 
 export default Search;

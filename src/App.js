@@ -50,7 +50,7 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-      // setfirstName={setfirstName}
+        // setfirstName={setfirstName}
       />
     );
   else if (type === "register")
@@ -92,11 +92,11 @@ function App() {
         </div>
         <AppContext.Provider value={screenSize}>
           <div
+            id="mainPage"
             style={{
               width: "100vw",
               height: "89vh",
               overflow: "auto",
-              
             }}
           >
             <Switch>
@@ -118,12 +118,20 @@ function App() {
               <Route exact path="/artists/:artistId" component={Artist} />
               <Route exact path="/genres/:genreId" component={Genre} />
 
-              <Route exact path="/search" render={(props) => (
-                <Search {...props} setsnackMessage={setsnackMessage}
-                  setsnackOpen={setsnackOpen}
-                  setseverity={setseverity} 
-              /> )} />
+              <Route
+                exact
+                path="/search"
+                render={(props) => (
+                  <Search
+                    {...props}
+                    setsnackMessage={setsnackMessage}
+                    setsnackOpen={setsnackOpen}
+                    setseverity={setseverity}
+                  />
+                )}
+              />
             </Switch>
+
             <Modal
               open={modalOpen}
               handleClose={() => {

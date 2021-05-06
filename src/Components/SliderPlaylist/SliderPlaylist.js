@@ -51,7 +51,10 @@ function SliderPlaylist(props) {
             <div key={i} className={`carousel-item ${active}`}>
               <div className="row">
                 {songs.slice(i, i + carouselsize[j]).map((song) => (
-                  <div key={song.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container">
+                  <div
+                    key={song.id}
+                    className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container"
+                  >
                     <img
                       src={`https://api.napster.com/imageserver/v2/albums/${song.albumId}/images/500x500.jpg`}
                       className="card-img-top sliderGenreImg"
@@ -97,6 +100,7 @@ function SliderPlaylist(props) {
                           `${localStorage.getItem("email")}-${song.id}`
                         ) ? (
                           <FavoriteIcon
+                            className="favbuttondelete"
                             color="secondary"
                             onClick={() => {
                               deleteFavourite(
@@ -106,6 +110,7 @@ function SliderPlaylist(props) {
                           />
                         ) : (
                           <FavoriteBorderIcon
+                            className="favbuttonadd"
                             onClick={() => {
                               addToFavourite(song);
                             }}

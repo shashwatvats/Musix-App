@@ -29,11 +29,14 @@ function SliderAlbum(props) {
           <div key={i} className={`carousel-item ${active}`}>
             <div className="row">
               {albums.slice(i, i + carouselsize[j]).map((album) => (
-                <div key={album.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
+                <div
+                  key={album.id}
+                  className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 "
+                >
                   <Link to={`/albums/${album.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/v2/albums/${album.id}/images/500x500.jpg`}
-                      className="card-img-top sliderGenreImg"
+                      className="card-img-top sliderGenreImg albumCypress"
                       style={{ borderRadius: "12px" }}
                       alt="..."
                     />

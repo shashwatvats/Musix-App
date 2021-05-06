@@ -29,11 +29,14 @@ function SliderGenre(props) {
           <div key={i} className={`carousel-item ${active}`}>
             <div className="row">
               {genres.slice(i, i + carouselsize[j]).map((genre) => (
-                <div key={genre.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
+                <div
+                  key={genre.id}
+                  className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 "
+                >
                   <Link to={`/genres/${genre.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/images/${genre.id}/240x160.jpg`}
-                      className="card-img-top sliderGenreImg"
+                      className="card-img-top sliderGenreImg genreCypress"
                       style={{ borderRadius: "12px" }}
                       alt="..."
                     />

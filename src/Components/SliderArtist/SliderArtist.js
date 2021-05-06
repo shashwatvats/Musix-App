@@ -29,11 +29,14 @@ function SliderArtist(props) {
           <div key={i} className={`carousel-item ${active}`}>
             <div className="row">
               {artists.slice(i, i + carouselsize[j]).map((artist) => (
-                <div key={artist.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
+                <div
+                  key={artist.id}
+                  className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0"
+                >
                   <Link to={`/artists/${artist.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/v2/artists/${artist.id}/images/500x500.jpg`}
-                      className="card-img-top sliderGenreImg"
+                      className="card-img-top sliderGenreImg artistCypress"
                       style={{ borderRadius: "40% 40% " }}
                       alt="..."
                     />

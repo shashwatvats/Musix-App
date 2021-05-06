@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -11,14 +11,14 @@ const useStyles = makeStyles({
   },
 });
 
-let passValidation = {display: 'none'};
-let passLength = {color:'red'};
-let passChar = {color:'red'};
+let passValidation = { display: "none" };
+let passLength = { color: "red" };
+let passChar = { color: "red" };
 let length = false;
 let check = false;
-let emailValidation = {display: 'none'};
-let emailValid = {color: 'red'};
-let checkEmail  = false;
+let emailValidation = { display: "none" };
+let emailValid = { color: "red" };
+let checkEmail = false;
 
 function Register(props) {
   const classes = useStyles();
@@ -31,7 +31,13 @@ function Register(props) {
   // const [error, seterror] = useState("");
 
   const register = () => {
-    if (password === "" || email === "" || firstName === "" || !(check && length) || !checkEmail) {
+    if (
+      password === "" ||
+      email === "" ||
+      firstName === "" ||
+      !(check && length) ||
+      !checkEmail
+    ) {
       props.setseverity("error");
       props.setsnackOpen(true);
       props.setsnackMessage("Desired Password, Email and firstName required!!");
@@ -54,19 +60,19 @@ function Register(props) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 200) {
-            props.setseverity("success");
+          props.setseverity("success");
           props.setsnackOpen(true);
           props.setsnackMessage(data.message);
           // props.setmodalOpen(false);
-          props.settype('login');
+          props.settype("login");
           return;
-        } 
-          props.setseverity("error");
-          props.setsnackOpen(true);
-          props.setsnackMessage(data.message);
+        }
+        props.setseverity("error");
+        props.setsnackOpen(true);
+        props.setsnackMessage(data.message);
       })
       .catch((err) => {
-          props.setseverity("error");
+        props.setseverity("error");
         props.setsnackOpen(true);
         props.setsnackMessage(err.message);
       });
@@ -74,16 +80,16 @@ function Register(props) {
 
   useEffect(() => {
     return () => {
-       passValidation = {display: 'none'};
-       passLength = {color:'red'};
-       passChar = {color:'red'};
-       length = false;
-       check = false;
-        emailValidation = {display: 'none'};
-        emailValid = {color: 'red'};
-        checkEmail = false;
-    }
-  },[]);
+      passValidation = { display: "none" };
+      passLength = { color: "red" };
+      passChar = { color: "red" };
+      length = false;
+      check = false;
+      emailValidation = { display: "none" };
+      emailValid = { color: "red" };
+      checkEmail = false;
+    };
+  }, []);
 
   function validateEmailRegEx(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -94,34 +100,32 @@ function Register(props) {
     let Email = e.target.value;
     setemail(Email);
     checkEmail = validateEmailRegEx(Email);
-    emailValidation = {display:'block'};
-    if(checkEmail) {
-      emailValid = {color:'green'}
-    }
-    else {
-      emailValid = {color: 'red'}
+    emailValidation = { display: "block" };
+    if (checkEmail) {
+      emailValid = { color: "green" };
+    } else {
+      emailValid = { color: "red" };
     }
   }
 
   function passwordHandler(e) {
     let pass = e.target.value;
     setpassword(pass);
-    passValidation = {display : 'block'};
-    length = pass.length>=8;
-    if(length) {
-      passLength = {color : 'green'};
+    passValidation = { display: "block" };
+    length = pass.length >= 8;
+    if (length) {
+      passLength = { color: "green" };
     }
-    if(!length) {
-      passLength = {color : 'red'};
+    if (!length) {
+      passLength = { color: "red" };
     }
     check = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/.test(pass);
-    if(check) {
-      passChar= {color :'green'};
+    if (check) {
+      passChar = { color: "green" };
     }
-    if(!check) {
-      passChar= {color : 'red'};
+    if (!check) {
+      passChar = { color: "red" };
     }
-
   }
 
   return (
@@ -204,7 +208,11 @@ function Register(props) {
               value={email}
             />
           </div>
-          <div className = "ps-4" style={{...emailValidation, fontSize:'0.8rem',width:'230px'}}>
+          <div
+            id="EmailValid"
+            className="ps-4"
+            style={{ ...emailValidation, fontSize: "0.8rem", width: "230px" }}
+          >
             <div style={emailValid}>Email should be Valid</div>
           </div>
           <div className="d-flex align-items-baseline">
@@ -220,13 +228,19 @@ function Register(props) {
               value={password}
             />
           </div>
-          <div className = "ps-4" style={{...passValidation, fontSize:'0.8rem',width:'230px'}}>
+          <div
+            id="passwordValid"
+            className="ps-4"
+            style={{ ...passValidation, fontSize: "0.8rem", width: "230px" }}
+          >
             <div style={passLength}>Password should have minimum length 8</div>
-            <div style={passChar}>Password should have 1 special character, 1 lowercase and 1 uppercase</div>
+            <div style={passChar}>
+              Password should have 1 special character, 1 lowercase and 1
+              uppercase
+            </div>
           </div>
           <div className="d-flex">
             <Button
-              id="login-button"
               color="secondary"
               variant="contained"
               className={`mt-3 me-3`}
@@ -234,10 +248,15 @@ function Register(props) {
             >
               Register
             </Button>
-            <Button variant="contained" color="secondary" className={`mt-3`} onClick={()=>{props.settype('login')}}>
-            
-                Sign-in
-             
+            <Button
+              variant="contained"
+              color="secondary"
+              className={`mt-3`}
+              onClick={() => {
+                props.settype("login");
+              }}
+            >
+              Sign-in
             </Button>
           </div>
           <hr />
@@ -247,8 +266,8 @@ function Register(props) {
                 style={{ color: "#1877F2", marginRight: "15px" }}
                 className="fab fa-facebook-f fa-lg"
               ></i>
-           </span>
-           <span>
+            </span>
+            <span>
               <i
                 style={{ color: "#0B66C2", marginRight: "15px" }}
                 className="fab fa-linkedin-in fa-lg"

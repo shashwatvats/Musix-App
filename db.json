@@ -78,11 +78,39 @@
       "name": "Down To One"
     },
     {
-      "id": "as-tra.579080597",
+      "id": "null-tra.577181360",
+      "email": null,
+      "albumId": "alb.577181345",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/4/5/2/6/3/2370736254.mp3",
+      "name": "Spiral"
+    },
+    {
+      "id": "null-tra.543785914",
+      "email": null,
+      "albumId": "alb.543785906",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/1/7/6/2/2275526715.mp3",
+      "name": "Still Trappin'"
+    },
+    {
+      "id": "null-tra.573895492",
+      "email": null,
+      "albumId": "alb.573895416",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/5/1/1/4/2363741150.mp3",
+      "name": "Forever & Always (Taylor’s Version)"
+    },
+    {
+      "id": "null-tra.579019959",
+      "email": null,
+      "albumId": "alb.579019957",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
+      "name": "Your Power"
+    },
+    {
+      "id": "as-tra.567438111",
       "email": "as",
-      "albumId": "alb.579080592",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/4/7/0/9/5/2375259074.mp3",
-      "name": "I DID IT"
+      "albumId": "alb.567438099",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/2/1/1/1/9/2376391112.mp3",
+      "name": "Once In A Lifetime"
     }
   ]
 }

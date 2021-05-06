@@ -3,7 +3,6 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-
 const useStyles = makeStyles({
   textfield: {
     width: "100%",
@@ -16,41 +15,41 @@ function Login(props) {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-    const loginHandler = () => {
-      fetch("http://localhost:9000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+  const loginHandler = () => {
+    fetch("http://localhost:9000/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 200) {
+          localStorage.setItem("token", data.access_token);
+          props.setseverity("success");
+          props.setsnackOpen(true);
+          props.setsnackMessage("LoggedIn Successfully!!");
+          props.setisLoggedIn(true);
+          props.setmodalOpen(false);
+          // props.setfirstName(data.userData.firstname);
+          localStorage.setItem("firstName", data.userData.firstname);
+          localStorage.setItem("email", data.userData.email);
+          return;
+        }
+        props.setseverity("error");
+        props.setsnackOpen(true);
+        props.setsnackMessage(data.message);
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status===200) {
-            localStorage.setItem("token", data.access_token);
-            props.setseverity("success");
-            props.setsnackOpen(true);
-            props.setsnackMessage("LoggedIn Successfully!!");
-            props.setisLoggedIn(true);
-            props.setmodalOpen(false);
-            // props.setfirstName(data.userData.firstname);
-            localStorage.setItem("firstName",data.userData.firstname);
-            localStorage.setItem("email",data.userData.email);
-            return;
-          }
-            props.setseverity("error");
-            props.setsnackOpen(true);
-            props.setsnackMessage(data.message);
-
-        }).catch(err=> {
-             props.setseverity("error");
-             props.setsnackOpen(true);
-             props.setsnackMessage(err.message);
-        });
-    };
+      .catch((err) => {
+        props.setseverity("error");
+        props.setsnackOpen(true);
+        props.setsnackMessage(err.message);
+      });
+  };
 
   return (
     <div className="d-flex">
@@ -62,9 +61,14 @@ function Login(props) {
           src="https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
         ></img>
       </div>
-      <div className="d-flex justify-content-center  mt-4 mx-auto" data-testid="containerid">
+      <div
+        className="d-flex justify-content-center  mt-4 mx-auto"
+        data-testid="containerid"
+      >
         <form className="d-flex flex-column align-items-center">
-          <div className="h1 text-primary" data-testid="testid">Login</div>
+          <div className="h1 text-primary" data-testid="testid">
+            Login
+          </div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
               <i className="fas fa-envelope" style={{ color: "#f50057" }}></i>
@@ -100,10 +104,16 @@ function Login(props) {
             >
               Login
             </Button>
-            <Button variant="contained" color="secondary" className={`mt-3`} onClick={()=>{props.settype('register')}}>
-             
-                SignUp
-            
+            <Button
+              id="signupButton"
+              variant="contained"
+              color="secondary"
+              className={`mt-3`}
+              onClick={() => {
+                props.settype("register");
+              }}
+            >
+              SignUp
             </Button>
           </div>
           <hr />
@@ -119,16 +129,16 @@ function Login(props) {
                 style={{ color: "#0B66C2", marginRight: "15px" }}
                 className="fab fa-linkedin-in fa-lg"
               ></i>
-           </span>
-           <span>
+            </span>
+            <span>
               <i
                 style={{ color: "#DE4F41", marginRight: "15px" }}
                 className="fab fa-google-plus-g fa-lg"
               ></i>
-           </span>
-           <span>
+            </span>
+            <span>
               <i style={{ color: "black" }} className="fab fa-github fa-lg"></i>
-              </span>
+            </span>
           </div>
         </form>
       </div>

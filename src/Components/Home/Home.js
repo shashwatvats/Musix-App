@@ -42,34 +42,38 @@ function Home() {
       });
   }, []);
 
-
-
   return loading ? (
     <Spinner />
   ) : (
-    <div style={{backgroundColor: "#9086b5"}}>
-    <div className="container" >
-      <Carousel
-        className="main-carousel mx-auto mb-3"
-        fade
-        style={{ width: "100%" }}
-      >
-        {tracks.map((item) => (
-          <Carousel.Item key= {item.id} className="carasoulitem">
-            <img
-              style={{ objectFit: "cover", borderRadius: "15px" }}
-              className="d-block w-100 mainCarousel"
-              src={`https://api.napster.com/imageserver/v2/albums/${item.albumId}/images/500x500.jpg`}
-              alt="First slide"
-            />
-            <Carousel.Caption  style={{pointerEvents:'none'}} className="mainCarasoulCaption">
-              <audio src={item.previewURL} id={`main-carasoul-play-${item.id}`}>
-                {/* <source src={item.previewURL} type="audio/mp3" /> */}
-              </audio>
-              
+    <div style={{ backgroundColor: "#9086b5" }}>
+      <div className="container">
+        <Carousel
+          className="main-carousel mx-auto mb-3"
+          fade
+          style={{ width: "100%" }}
+        >
+          {tracks.map((item) => (
+            <Carousel.Item key={item.id} className="carasoulitem">
+              <img
+                style={{ objectFit: "cover", borderRadius: "15px" }}
+                className="d-block w-100 mainCarousel"
+                src={`https://api.napster.com/imageserver/v2/albums/${item.albumId}/images/500x500.jpg`}
+                alt="First slide"
+              />
+              <Carousel.Caption
+                style={{ pointerEvents: "none" }}
+                className="mainCarasoulCaption"
+              >
+                <audio
+                  src={item.previewURL}
+                  id={`main-carasoul-play-${item.id}`}
+                >
+                  {/* <source src={item.previewURL} type="audio/mp3" /> */}
+                </audio>
+
                 {mainCarasoulplaybutton[item.id] ? (
                   <i
-                    style={{pointerEvents:"initial", cursor: "pointer" }}
+                    style={{ pointerEvents: "initial", cursor: "pointer" }}
                     onClick={() => {
                       document
                         .getElementById(`main-carasoul-play-${item.id}`)
@@ -78,11 +82,11 @@ function Home() {
                         return { ...prevState, [item.id]: false };
                       });
                     }}
-                    className="far fa-pause-circle fa-3x"
+                    className="far fa-pause-circle fa-3x cypresstestpause"
                   ></i>
                 ) : (
                   <i
-                    style={{pointerEvents:"initial", cursor: "pointer" }}
+                    style={{ pointerEvents: "initial", cursor: "pointer" }}
                     onClick={() => {
                       document
                         .getElementById(`main-carasoul-play-${item.id}`)
@@ -91,30 +95,26 @@ function Home() {
                         return { ...prevState, [item.id]: true };
                       });
                     }}
-                    className="far fa-play-circle fa-3x mainCarasoulPlayButton"
+                    className="far fa-play-circle fa-3x mainCarasoulPlayButton cypresstestplay"
                   ></i>
                 )}
-            
 
-              <h4 style={{pointerEvents:'none'}}>{item.name}</h4>
-            </Carousel.Caption>
-          </Carousel.Item>
+                <h4 style={{ pointerEvents: "none" }}>{item.name}</h4>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+
+        <SliderGenre />
+        <SliderArtist />
+        <SliderAlbum />
+        {playlists.map((playlist) => (
+          <SliderPlaylist key={playlist.id} playlist={playlist} />
         ))}
-      </Carousel>
-    
-      <SliderGenre />
-      <SliderArtist />
-      <SliderAlbum />
-      {playlists.map((playlist) => (
-        <SliderPlaylist
-          key={playlist.id}
-          playlist={playlist}
-        />
-      ))}
 
-      {/* <Slider playlist={playlists[0]} screenSize={screenSize} />
+        {/* <Slider playlist={playlists[0]} screenSize={screenSize} />
           <Slider playlist={playlists[1]}  screenSize={screenSize} /> */}
-    </div>
+      </div>
     </div>
   );
 }

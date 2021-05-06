@@ -64,7 +64,7 @@ function Register(props) {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex" data-testid="containerid">
       <div className="d-none d-sm-block">
         <img
           width="250px"

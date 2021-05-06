@@ -62,9 +62,9 @@ function Login(props) {
           src="https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
         ></img>
       </div>
-      <div className="d-flex justify-content-center  mt-4 mx-auto">
+      <div className="d-flex justify-content-center  mt-4 mx-auto" data-testid="containerid">
         <form className="d-flex flex-column align-items-center">
-          <div className="h1 text-primary">Login</div>
+          <div className="h1 text-primary" data-testid="testid">Login</div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
               <i class="fas fa-envelope" style={{ color: "#f50057" }}></i>

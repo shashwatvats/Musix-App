@@ -96,7 +96,7 @@ function App() {
               width: "100vw",
               height: "89vh",
               overflow: "auto",
-             backgroundColor:"maroon"
+             backgroundColor:"#9086b5"
             }}
           >
             <Switch>
@@ -141,6 +141,7 @@ function App() {
           {snackMessage}
         </Alert>
       </Snackbar>
+      learn react
     </div>
   );
 }

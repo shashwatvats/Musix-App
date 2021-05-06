@@ -47,7 +47,10 @@ function Search(props) {
             handleChange={(e) => multiSelecthandler(e)}
           />
         </div>
-        <div className="form-group d-flex align-items-center  mt-2 col-md-4">
+        <div
+          className="form-group d-flex align-items-center  mt-2 col-md-4"
+          data-testid="form1"
+        >
           <input
             type="search"
             id="queryCypress"

@@ -12,7 +12,7 @@ function Header(props) {
   }
 
   return (
-    <div>
+    <div className="containers-fluid" data-testid="navid">
       <nav
         style={{ zIndex: 2, backgroundColor: "#3e3269" }}
         className="navbar navbar-expand-sm navbar-dark  justify-content-between"
@@ -28,6 +28,7 @@ function Header(props) {
               <img
                 src="https://i.pinimg.com/236x/30/78/72/307872e5b50ace07ce5b084fa42f4819--sound-wave-tattoo-sound-waves-logo.jpg"
                 alt=""
+                data-testid="imgid"
                 width="34"
                 height="34"
                 style={{ borderRadius: "50%" }}

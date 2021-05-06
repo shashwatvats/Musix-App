@@ -3,8 +3,8 @@ Cypress.Commands.add("login", () => {
     method: "POST",
     url: "http://localhost:9000/auth/login",
     body: {
-      email: "as",
-      password: "as",
+      email: "Ritik@gmail.com",
+      password: "Ritik@123",
     },
   }).then((data) => {
     window.localStorage.setItem("token", data.body.access_token);
@@ -148,8 +148,8 @@ describe("Muzix Test cases", () => {
     );
   });
   it("should check for Correct Login Credentials", () => {
-    cy.get("#email").type("as");
-    cy.get("#password").type("as");
+    cy.get("#email").type("Ritik@gmail.com");
+    cy.get("#password").type("Ritik@123");
     cy.get("#login-button").click();
     cy.get(".MuiAlert-message").should("have.text", "LoggedIn Successfully!!");
   });

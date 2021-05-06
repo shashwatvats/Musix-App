@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GenreDisplay from "../GenreDisplay/GenreDisplay";
+import Spinner from "../Spinner/Spinner";
 
 function Genre(props) {
   const [genre, setgenre] = useState({});
@@ -17,7 +18,7 @@ function Genre(props) {
       });
   }, []);
   return (
-      loading? "" :
+      loading? <Spinner /> :
     <div>
       {/* {genre.links.tracks.href} */}
       <GenreDisplay genre={genre} />

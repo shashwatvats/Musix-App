@@ -3,9 +3,9 @@ import SliderPlaylist from "../SliderPlaylist/SliderPlaylist";
 import Carousel from "react-bootstrap/Carousel";
 import "../Dashboard/Dashboard.css";
 import SliderAlbum from "../SliderAlbum/SliderAlbum";
-import FavouriteSlider from "../FavouriteSlider/FavouriteSlider";
 import SliderArtist from "../SliderArtist/SliderArtist";
 import SliderGenre from "../SliderGenre/SliderGenre";
+import Spinner from "../Spinner/Spinner";
 
 function Home() {
   const [playlists, setplaylists] = useState([]);
@@ -13,7 +13,6 @@ function Home() {
   const [loading, setloading] = useState(true);
 
   const [mainCarasoulplaybutton, setmainCarasoulplaybutton] = useState({});
-  const [favourites, setfavourites] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -43,29 +42,20 @@ function Home() {
       });
   }, []);
 
-  useEffect(() => {
-    fetch(
-      `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
-    )
-      .then((res) => res.json())
-      .then((favouritess) => {
-        setfavourites(favouritess);
-      });
-  }, [favourites]);
 
-  let favouriteSongsIds = favourites.map((favourite) => favourite.id);
 
   return loading ? (
-    ""
+    <Spinner />
   ) : (
-    <div class="container">
+    <div style={{backgroundColor: "#9086b5"}}>
+    <div className="container" >
       <Carousel
         className="main-carousel mx-auto mb-3"
         fade
         style={{ width: "100%" }}
       >
         {tracks.map((item) => (
-          <Carousel.Item className="carasoulitem">
+          <Carousel.Item key= {item.id} className="carasoulitem">
             <img
               style={{ objectFit: "cover", borderRadius: "15px" }}
               className="d-block w-100 mainCarousel"
@@ -88,7 +78,7 @@ function Home() {
                         return { ...prevState, [item.id]: false };
                       });
                     }}
-                    class="far fa-pause-circle fa-3x"
+                    className="far fa-pause-circle fa-3x"
                   ></i>
                 ) : (
                   <i
@@ -101,7 +91,7 @@ function Home() {
                         return { ...prevState, [item.id]: true };
                       });
                     }}
-                    class="far fa-play-circle fa-3x mainCarasoulPlayButton"
+                    className="far fa-play-circle fa-3x mainCarasoulPlayButton"
                   ></i>
                 )}
             
@@ -111,12 +101,7 @@ function Home() {
           </Carousel.Item>
         ))}
       </Carousel>
-      {window.location.pathname == "/dashboard" ? (
-        <FavouriteSlider favourites={favourites} />
-      ) : (
-        ""
-      )}
-
+    
       <SliderGenre />
       <SliderArtist />
       <SliderAlbum />
@@ -124,12 +109,12 @@ function Home() {
         <SliderPlaylist
           key={playlist.id}
           playlist={playlist}
-          favouriteSongsIds={favouriteSongsIds}
         />
       ))}
 
       {/* <Slider playlist={playlists[0]} screenSize={screenSize} />
           <Slider playlist={playlists[1]}  screenSize={screenSize} /> */}
+    </div>
     </div>
   );
 }

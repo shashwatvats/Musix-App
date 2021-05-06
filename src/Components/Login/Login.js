@@ -29,7 +29,7 @@ function Login(props) {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.status=="200") {
+          if (data.status===200) {
             localStorage.setItem("token", data.access_token);
             props.setseverity("success");
             props.setsnackOpen(true);
@@ -67,7 +67,7 @@ function Login(props) {
           <div className="h1 text-primary" data-testid="testid">Login</div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
-              <i class="fas fa-envelope" style={{ color: "#f50057" }}></i>
+              <i className="fas fa-envelope" style={{ color: "#f50057" }}></i>
             </span>
             <TextField
               id="email"
@@ -79,7 +79,7 @@ function Login(props) {
           </div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
-              <i class="fas fa-key" style={{ color: "#f50057" }}></i>
+              <i className="fas fa-key" style={{ color: "#f50057" }}></i>
             </span>
             <TextField
               id="password"
@@ -111,23 +111,23 @@ function Login(props) {
             <span>
               <i
                 style={{ color: "#1877F2", marginRight: "15px" }}
-                class="fab fa-facebook-f fa-lg"
+                className="fab fa-facebook-f fa-lg"
               ></i>
             </span>
             <span>
               <i
                 style={{ color: "#0B66C2", marginRight: "15px" }}
-                class="fab fa-linkedin-in fa-lg"
+                className="fab fa-linkedin-in fa-lg"
               ></i>
            </span>
            <span>
               <i
                 style={{ color: "#DE4F41", marginRight: "15px" }}
-                class="fab fa-google-plus-g fa-lg"
+                className="fab fa-google-plus-g fa-lg"
               ></i>
            </span>
            <span>
-              <i style={{ color: "black" }} class="fab fa-github fa-lg"></i>
+              <i style={{ color: "black" }} className="fab fa-github fa-lg"></i>
               </span>
           </div>
         </form>

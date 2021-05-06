@@ -24,12 +24,12 @@ function SliderArtist(props) {
       arr = [];
       let active = "active";
       for (let i = 0; i < 12; i += carouselsize[j]) {
-        if (i != 0) active = "";
+        if (i !== 0) active = "";
         arr.push(
-          <div class={`carousel-item ${active}`}>
+          <div key={i} className={`carousel-item ${active}`}>
             <div className="row">
               {artists.slice(i, i + carouselsize[j]).map((artist) => (
-                <div class="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
+                <div key={artist.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 ">
                   <Link to={`/artists/${artist.id}`}>
                     <img
                       src={`https://api.napster.com/imageserver/v2/artists/${artist.id}/images/500x500.jpg`}
@@ -56,14 +56,14 @@ function SliderArtist(props) {
       <div className="h4 text-danger">Artists</div>
       <div
         id="artist"
-        class="carousel slide carousel-fade"
+        className="carousel slide carousel-fade"
         // data-bs-ride="carousel"
         data-interval="false"
       >
-        <div class="carousel-inner">{arr}</div>
+        <div className="carousel-inner">{arr}</div>
 
         <button
-          class="carousel-control-prev"
+          className="carousel-control-prev"
           type="button"
           style={{ height: "50%", width: "5%" }}
           data-bs-target="#artist"
@@ -71,13 +71,13 @@ function SliderArtist(props) {
         >
           <span
             style={{ backgroundColor: "rgba(0,0,0,.6)" }}
-            class="carousel-control-prev-icon rounded-circle"
+            className="carousel-control-prev-icon rounded-circle"
             aria-hidden="true"
           ></span>
-          <span class="visually-hidden">Previous</span>
+          <span className="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          className="carousel-control-next"
           type="button"
           style={{ height: "50%", width: "5%" }}
           data-bs-target="#artist"
@@ -85,10 +85,10 @@ function SliderArtist(props) {
         >
           <span
             style={{ backgroundColor: "rgba(0,0,0,.6)" }}
-            class="carousel-control-next-icon rounded-circle"
+            className="carousel-control-next-icon rounded-circle"
             aria-hidden="true"
           ></span>
-          <span class="visually-hidden">Next</span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
     </Paper>

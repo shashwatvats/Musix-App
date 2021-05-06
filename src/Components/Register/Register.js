@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -11,6 +11,15 @@ const useStyles = makeStyles({
   },
 });
 
+let passValidation = {display: 'none'};
+let passLength = {color:'red'};
+let passChar = {color:'red'};
+let length = false;
+let check = false;
+let emailValidation = {display: 'none'};
+let emailValid = {color: 'red'};
+let checkEmail  = false;
+
 function Register(props) {
   const classes = useStyles();
   const [firstName, setfirstName] = useState("");
@@ -22,10 +31,10 @@ function Register(props) {
   // const [error, seterror] = useState("");
 
   const register = () => {
-    if (password == "" || email == "" || firstName == "") {
+    if (password === "" || email === "" || firstName === "" || !(check && length) || !checkEmail) {
       props.setseverity("error");
       props.setsnackOpen(true);
-      props.setsnackMessage("Password, Email and firstName required!!");
+      props.setsnackMessage("Desired Password, Email and firstName required!!");
       return;
     }
     fetch("http://localhost:9000/auth/register", {
@@ -44,7 +53,7 @@ function Register(props) {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "200") {
+        if (data.status === 200) {
             props.setseverity("success");
           props.setsnackOpen(true);
           props.setsnackMessage(data.message);
@@ -63,6 +72,58 @@ function Register(props) {
       });
   };
 
+  useEffect(() => {
+    return () => {
+       passValidation = {display: 'none'};
+       passLength = {color:'red'};
+       passChar = {color:'red'};
+       length = false;
+       check = false;
+        emailValidation = {display: 'none'};
+        emailValid = {color: 'red'};
+        checkEmail = false;
+    }
+  },[]);
+
+  function validateEmailRegEx(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  function emailValidate(e) {
+    let Email = e.target.value;
+    setemail(Email);
+    checkEmail = validateEmailRegEx(Email);
+    emailValidation = {display:'block'};
+    if(checkEmail) {
+      emailValid = {color:'green'}
+    }
+    else {
+      emailValid = {color: 'red'}
+    }
+  }
+
+  function passwordHandler(e) {
+    let pass = e.target.value;
+    setpassword(pass);
+    passValidation = {display : 'block'};
+    length = pass.length>=8;
+    if(length) {
+      passLength = {color : 'green'};
+    }
+    if(!length) {
+      passLength = {color : 'red'};
+    }
+    check = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/.test(pass);
+    if(check) {
+      passChar= {color :'green'};
+    }
+    if(!check) {
+      passChar= {color : 'red'};
+    }
+
+  }
+
   return (
     <div className="d-flex" data-testid="containerid">
       <div className="d-none d-sm-block">
@@ -79,7 +140,7 @@ function Register(props) {
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
               <i
-                class="fas fa-hand-point-right"
+                className="fas fa-hand-point-right"
                 style={{ color: "#f50057" }}
               ></i>
             </span>
@@ -94,7 +155,7 @@ function Register(props) {
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
               <i
-                class="fas fa-hand-point-right"
+                className="fas fa-hand-point-right"
                 style={{ color: "#f50057" }}
               ></i>
             </span>
@@ -121,7 +182,7 @@ function Register(props) {
           </div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
-              <i class="far fa-building" style={{ color: "#f50057" }}></i>
+              <i className="far fa-building" style={{ color: "#f50057" }}></i>
             </span>
             <TextField
               id="city"
@@ -133,28 +194,35 @@ function Register(props) {
           </div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
-              <i class="fas fa-envelope" style={{ color: "#f50057" }}></i>
+              <i className="fas fa-envelope" style={{ color: "#f50057" }}></i>
             </span>
             <TextField
               id="email"
               className={`${classes.textfield} mb-2 ms-2`}
               label="Email"
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(e) => emailValidate(e)}
               value={email}
             />
           </div>
+          <div className = "ps-4" style={{...emailValidation, fontSize:'0.8rem',width:'230px'}}>
+            <div style={emailValid}>Email should be Valid</div>
+          </div>
           <div className="d-flex align-items-baseline">
             <span id="addon-wrapping">
-              <i class="fas fa-key" style={{ color: "#f50057" }}></i>
+              <i className="fas fa-key" style={{ color: "#f50057" }}></i>
             </span>
             <TextField
               id="password"
               type="password"
               className={`${classes.textfield} mb-2 ms-2`}
               label="Password"
-              onChange={(e) => setpassword(e.target.value)}
+              onChange={(e) => passwordHandler(e)}
               value={password}
             />
+          </div>
+          <div className = "ps-4" style={{...passValidation, fontSize:'0.8rem',width:'230px'}}>
+            <div style={passLength}>Password should have minimum length 8</div>
+            <div style={passChar}>Password should have 1 special character, 1 lowercase and 1 uppercase</div>
           </div>
           <div className="d-flex">
             <Button
@@ -177,23 +245,23 @@ function Register(props) {
             <span>
               <i
                 style={{ color: "#1877F2", marginRight: "15px" }}
-                class="fab fa-facebook-f fa-lg"
+                className="fab fa-facebook-f fa-lg"
               ></i>
            </span>
            <span>
               <i
                 style={{ color: "#0B66C2", marginRight: "15px" }}
-                class="fab fa-linkedin-in fa-lg"
+                className="fab fa-linkedin-in fa-lg"
               ></i>
             </span>
             <span>
               <i
                 style={{ color: "#DE4F41", marginRight: "15px" }}
-                class="fab fa-google-plus-g fa-lg"
+                className="fab fa-google-plus-g fa-lg"
               ></i>
             </span>
             <span>
-              <i style={{ color: "black" }} class="fab fa-github fa-lg"></i>
+              <i style={{ color: "black" }} className="fab fa-github fa-lg"></i>
             </span>
           </div>
         </form>

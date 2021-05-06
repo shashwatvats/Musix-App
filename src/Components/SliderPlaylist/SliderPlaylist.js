@@ -46,12 +46,12 @@ function SliderPlaylist(props) {
         arr = [];
         let active = "active";
         for (let i = 0; i < 12; i += carouselsize[j]) {
-          if (i != 0) active = "";
+          if (i !== 0) active = "";
           arr.push(
-            <div class={`carousel-item ${active}`}>
+            <div key={i} className={`carousel-item ${active}`}>
               <div className="row">
                 {songs.slice(i, i + carouselsize[j]).map((song) => (
-                  <div class="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container">
+                  <div key={song.id} className="col-6 col-sm-3 col-md-3 col-lg-2 p-2 card border-0 slide-container">
                     <img
                       src={`https://api.napster.com/imageserver/v2/albums/${song.albumId}/images/500x500.jpg`}
                       className="card-img-top sliderGenreImg"
@@ -72,7 +72,7 @@ function SliderPlaylist(props) {
                               return { ...prevState, [song.id]: false };
                             });
                           }}
-                          class="far fa-pause-circle fa-2x btn carasoulbtn"
+                          className="far fa-pause-circle fa-2x btn carasoulbtn"
                         ></i>
                       ) : (
                         <i
@@ -82,7 +82,7 @@ function SliderPlaylist(props) {
                               return { ...prevState, [song.id]: true };
                             });
                           }}
-                          class="far fa-play-circle fa-2x btn carasoulbtn"
+                          className="far fa-play-circle fa-2x btn carasoulbtn"
                         ></i>
                       )}
                     </div>
@@ -92,7 +92,7 @@ function SliderPlaylist(props) {
                       </h5>
                       {/* <FavoriteIcon color="secondary"/>
                                     <FavoriteBorderIcon /> */}
-                      {window.location.pathname == "/dashboard" ? (
+                      {window.location.pathname === "/dashboard" ? (
                         favouriteSongsIds.includes(
                           `${localStorage.getItem("email")}-${song.id}`
                         ) ? (
@@ -148,28 +148,28 @@ function SliderPlaylist(props) {
       <div className="h4 text-danger">{playlist.name}</div>
       <div
         id={`playlist-${playlist.id.slice(3)}`}
-        class="carousel slide carousel-fade"
+        className="carousel slide carousel-fade"
         // data-bs-ride="carousel"
         data-interval="false"
       >
-        <div class="carousel-inner">{arr}</div>
+        <div className="carousel-inner">{arr}</div>
 
         <button
-          class="carousel-control-prev"
+          className="carousel-control-prev"
           type="button"
           style={{ height: "50%", width: "5%" }}
           data-bs-target={`#playlist-${playlist.id.slice(3)}`}
           data-bs-slide="prev"
         >
           <span
-            class="carousel-control-prev-icon rounded-circle"
+            className="carousel-control-prev-icon rounded-circle"
             style={{ backgroundColor: "rgba(0,0,0,.6)" }}
             aria-hidden="true"
           ></span>
-          <span class="visually-hidden">Previous</span>
+          <span className="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          className="carousel-control-next"
           type="button"
           style={{ height: "50%", width: "5%" }}
           data-bs-target={`#playlist-${playlist.id.slice(3)}`}
@@ -177,10 +177,10 @@ function SliderPlaylist(props) {
         >
           <span
             style={{ backgroundColor: "rgba(0,0,0,.6)" }}
-            class="carousel-control-next-icon rounded-circle"
+            className="carousel-control-next-icon rounded-circle"
             aria-hidden="true"
           ></span>
-          <span class="visually-hidden">Next</span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
     </Paper>

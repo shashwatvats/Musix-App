@@ -15,29 +15,29 @@ function Header(props) {
     <div>
       <nav
         style={{ zIndex: 2, backgroundColor: "#3e3269" }}
-        class="navbar navbar-expand-sm navbar-dark  justify-content-between"
+        className="navbar navbar-expand-sm navbar-dark  justify-content-between"
       >
-        <div class="container-fluid">
+        <div className="container-fluid">
           <NavLink
             exact
             activeStyle={{ fontWeight: "bold" }}
             className="nav-link"
             to="/"
           >
-            <span class="navbar-brand d-flex align-items-center">
+            <span className="navbar-brand d-flex align-items-center">
               <img
                 src="https://i.pinimg.com/236x/30/78/72/307872e5b50ace07ce5b084fa42f4819--sound-wave-tattoo-sound-waves-logo.jpg"
                 alt=""
                 width="34"
                 height="34"
                 style={{ borderRadius: "50%" }}
-                class="d-inline-block align-text-top me-2"
+                className="d-inline-block align-text-top me-2"
               ></img>
               Miuzik Mania
             </span>
           </NavLink>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -45,15 +45,15 @@ function Header(props) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            class="collapse navbar-collapse "
+            className="collapse navbar-collapse "
             style={{ flexGrow: "0" }}
             id="navbarSupportedContent"
           >
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
                 {props.isLoggedIn ? (
                   <NavLink
                     exact
@@ -74,7 +74,7 @@ function Header(props) {
                   </NavLink>
                 )}
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <NavLink
                   exact
                   activeStyle={{ fontWeight: "bold" }}
@@ -86,12 +86,12 @@ function Header(props) {
               </li>
               {props.isLoggedIn ? (
                 <li className="nav-item">
-                  <span class="nav-link">
+                  <span className="nav-link">
                     Welcome,<b>{localStorage.getItem("firstName")}</b>
                   </span>{" "}
                 </li>
               ) : (
-                <li class="nav-item">
+                <li className="nav-item">
                   <Button
                     className="nav-link"
                     variant="contained"
@@ -101,7 +101,7 @@ function Header(props) {
                       props.settype("login");
                     }}
                   >
-                    LogIn/SignUp <i class="fas fa-sign-in-alt"></i>
+                    LogIn/SignUp <i className="fas fa-sign-in-alt"></i>
                   </Button>
                 </li>
               )}
@@ -114,7 +114,7 @@ function Header(props) {
                     style={{ backgroundColor: "#263c3c", color: "white" }}
                     onClick={logOutHandler}
                   >
-                    LogOut <i class="fas fa-sign-in-alt"></i>
+                    LogOut <i className="fas fa-sign-in-alt"></i>
                   </Button>
                 </li>
               ) : (

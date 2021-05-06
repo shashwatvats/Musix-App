@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 function GenreDisplay(props) {
   const { genre } = props;
@@ -60,7 +59,7 @@ function GenreDisplay(props) {
                           return { ...prevState, [song.id]: false };
                         });
                       }}
-                      class="far fa-pause-circle fa-2x btn"
+                      className="far fa-pause-circle fa-2x btn"
                     ></i>
                   ) : (
                     <i
@@ -70,7 +69,7 @@ function GenreDisplay(props) {
                           return { ...prevState, [song.id]: true };
                         });
                       }}
-                      class="far fa-play-circle fa-2x btn"
+                      className="far fa-play-circle fa-2x btn"
                     ></i>
                   )}
                 </div>

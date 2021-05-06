@@ -41,7 +41,7 @@ function App() {
   // const [firstName, setfirstName] = useState("")
 
   let component = "";
-  if (type == "login")
+  if (type === "login")
     component = (
       <Login
         setsnackMessage={setsnackMessage}
@@ -50,10 +50,10 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-        // setfirstName={setfirstName}
+      // setfirstName={setfirstName}
       />
     );
-  else if (type == "register")
+  else if (type === "register")
     component = (
       <Register
         setsnackMessage={setsnackMessage}
@@ -96,7 +96,7 @@ function App() {
               width: "100vw",
               height: "89vh",
               overflow: "auto",
-             backgroundColor:"#9086b5"
+              
             }}
           >
             <Switch>
@@ -118,7 +118,11 @@ function App() {
               <Route exact path="/artists/:artistId" component={Artist} />
               <Route exact path="/genres/:genreId" component={Genre} />
 
-              <Route exact path="/search" component={Search} />
+              <Route exact path="/search" render={(props) => (
+                <Search {...props} setsnackMessage={setsnackMessage}
+                  setsnackOpen={setsnackOpen}
+                  setseverity={setseverity} 
+              /> )} />
             </Switch>
             <Modal
               open={modalOpen}
@@ -141,7 +145,6 @@ function App() {
           {snackMessage}
         </Alert>
       </Snackbar>
-      learn react
     </div>
   );
 }

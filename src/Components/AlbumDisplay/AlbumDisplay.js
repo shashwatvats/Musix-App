@@ -74,7 +74,7 @@ function AlbumDisplay(props) {
                           return { ...prevState, [song.id]: false };
                         });
                       }}
-                      class="far fa-pause-circle fa-2x btn"
+                      className="far fa-pause-circle fa-2x btn"
                     ></i>
                   ) : (
                     <i
@@ -84,7 +84,7 @@ function AlbumDisplay(props) {
                           return { ...prevState, [song.id]: true };
                         });
                       }}
-                      class="far fa-play-circle fa-2x btn"
+                      className="far fa-play-circle fa-2x btn"
                     ></i>
                   )}
                 </div>

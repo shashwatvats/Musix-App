@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ArtistDisplay from "../ArtistDisplay/ArtistDisplay";
+import Spinner from "../Spinner/Spinner";
 
 function Artist(props) {
   const [artist, setartist] = useState({});
@@ -17,7 +18,7 @@ function Artist(props) {
       });
   }, []);
   return loading ? (
-    ""
+    <Spinner />
   ) : (
     <div>
       {/* {artist.links.tracks.href} */}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AlbumDisplay from "../AlbumDisplay/AlbumDisplay";
+import Spinner from "../Spinner/Spinner";
 
 function Album(props) {
   const [album, setalbum] = useState({});
@@ -14,9 +15,9 @@ function Album(props) {
         setalbum(data.albums[0]);
         setloading(false);
       });
-  }, []);
+  },[]);
   return (
-      loading? "" :
+      loading? <Spinner /> :
     <div>
       {/* {album.links.tracks.href} */}
       <AlbumDisplay album={album} />

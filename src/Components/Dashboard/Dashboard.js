@@ -6,6 +6,7 @@ import SliderAlbum from "../SliderAlbum/SliderAlbum";
 import FavouriteSlider from "../FavouriteSlider/FavouriteSlider";
 import SliderArtist from "../SliderArtist/SliderArtist";
 import SliderGenre from "../SliderGenre/SliderGenre";
+import Spinner from "../Spinner/Spinner";
 
 function Dashboard() {
   const [playlists, setplaylists] = useState([]);
@@ -57,10 +58,11 @@ function Dashboard() {
 
   let favouriteSongsIds = favourites.map((favourite) => favourite.id);
 
-  return loading ? (
-    ""
-  ) : (
-    <div class="container">
+  return loading ? 
+    <Spinner />
+  : (
+    <div style={{backgroundColor: "#9086b5"}}>
+    <div className="container">
       <Carousel
         className="main-carousel mx-auto mb-3"
         fade
@@ -90,7 +92,7 @@ function Dashboard() {
                         return { ...prevState, [item.id]: false };
                       });
                     }}
-                    class="far fa-pause-circle fa-3x"
+                    className="far fa-pause-circle fa-3x"
                   ></i>
                 ) : (
                   <i
@@ -103,7 +105,7 @@ function Dashboard() {
                         return { ...prevState, [item.id]: true };
                       });
                     }}
-                    class="far fa-play-circle fa-3x"
+                    className="far fa-play-circle fa-3x"
                   ></i>
                 )}
               </div>
@@ -113,8 +115,9 @@ function Dashboard() {
           </Carousel.Item>
         ))}
       </Carousel>
-            <FavouriteSlider favourites={favourites} />
 
+        <FavouriteSlider favourites={favourites} />
+   
         <SliderGenre  />
         <SliderArtist />
         <SliderAlbum  />
@@ -130,6 +133,7 @@ function Dashboard() {
 
       {/* <Slider playlist={playlists[0]} screenSize={screenSize} />
           <Slider playlist={playlists[1]}  screenSize={screenSize} /> */}
+    </div>
     </div>
   );
 }

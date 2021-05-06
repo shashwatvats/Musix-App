@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -46,7 +46,6 @@ const allsources = [
 
 export default function MultipleSelect(props) {
   const classes = useStyles();
-  const theme = useTheme();
   // const [personName, setPersonName] = React.useState([]);
   const { types, handleChange } = props;
 
@@ -69,7 +68,7 @@ export default function MultipleSelect(props) {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">Sources</InputLabel>
+        <InputLabel id="demo-mutiple-checkbox-label">Parameter</InputLabel>
         <Select
           labelId="demo-mutiple-checkbox-label"
           multiple

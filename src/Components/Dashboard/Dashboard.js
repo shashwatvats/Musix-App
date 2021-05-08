@@ -8,13 +8,12 @@ import SliderArtist from "../SliderArtist/SliderArtist";
 import SliderGenre from "../SliderGenre/SliderGenre";
 import Spinner from "../Spinner/Spinner";
 
-function Dashboard() {
+function Dashboard(props) {
   const [playlists, setplaylists] = useState([]);
   const [tracks, settracks] = useState([]);
   const [loading, setloading] = useState(true);
-
+  const { favourites, deleteFavourite, addToFavourite } = props;
   const [mainCarasoulplaybutton, setmainCarasoulplaybutton] = useState({});
-  const [favourites, setfavourites] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -44,15 +43,7 @@ function Dashboard() {
       });
   }, []);
 
-  useEffect(() => {
-    fetch(
-      `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
-    )
-      .then((res) => res.json())
-      .then((favouritess) => {
-        setfavourites(favouritess);
-      });
-  }, [favourites]);
+
 
   let favouriteSongsIds = favourites.map((favourite) => favourite.id);
 
@@ -118,7 +109,7 @@ function Dashboard() {
           ))}
         </Carousel>
 
-        <FavouriteSlider favourites={favourites} />
+        <FavouriteSlider favourites={favourites} deleteFavourite={deleteFavourite}  />
 
         <SliderGenre />
         <SliderArtist />
@@ -128,6 +119,8 @@ function Dashboard() {
             key={playlist.id}
             playlist={playlist}
             favouriteSongsIds={favouriteSongsIds}
+            addToFavourite={addToFavourite}
+            deleteFavourite={deleteFavourite}
           />
         ))}
 

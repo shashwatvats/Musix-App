@@ -13,10 +13,20 @@ import Album from "./Components/Album/Album";
 import Artist from "./Components/Artist/Artist";
 import Genre from "./Components/Genre/Genre";
 import Search from "./Components/Search/Search";
+import SeeAllFavourites from "./Components/SeeAllFavourites/SeeAllFavourites";
 export const AppContext = React.createContext();
 
 function App() {
   const [screenSize, setscreenSize] = useState(window.innerWidth);
+  const [favourites, setfavourites] = useState([]);
+  const [snackOpen, setsnackOpen] = useState(false);
+  const [snackMessage, setsnackMessage] = useState("");
+  const [severity, setseverity] = useState("");
+  const [modalOpen, setmodalOpen] = useState(false);
+  const [type, settype] = useState("");
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+
+
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
@@ -32,13 +42,46 @@ function App() {
 
     setsnackOpen(false);
   };
-  const [snackOpen, setsnackOpen] = useState(false);
-  const [snackMessage, setsnackMessage] = useState("");
-  const [severity, setseverity] = useState("");
-  const [modalOpen, setmodalOpen] = useState(false);
-  const [type, settype] = useState("");
-  const [isLoggedIn, setisLoggedIn] = useState(false);
-  // const [firstName, setfirstName] = useState("")
+
+  async function deleteFavourite(id) {
+    await fetch(`http://localhost:4000/favourites/${id}`, {
+      method: "DELETE",
+    });
+    setfavourites(favourites.filter(favourite => favourite.id !== id));
+  }
+
+
+  function addToFavourite(song) {
+    fetch("http://localhost:4000/favourites", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: `${localStorage.getItem("email")}-${song.id}`,
+        email: localStorage.getItem("email"),
+        albumId: song.albumId,
+        previewURL: song.previewURL,
+        name: song.name,
+      }),
+    }).then(res => res.json())
+      .then(favourite => {
+        setfavourites([...favourites,favourite])
+      });
+
+  }
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
+    )
+      .then((res) => res.json())
+      .then((favouritess) => {
+        setfavourites(favouritess);
+      });
+  }, []);
+
+
 
   let component = "";
   if (type === "login")
@@ -50,7 +93,7 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-        // setfirstName={setfirstName}
+      // setfirstName={setfirstName}
       />
     );
   else if (type === "register")
@@ -103,8 +146,8 @@ function App() {
               <Route
                 exact
                 path="/dashboard"
-                render={() =>
-                  isLoggedIn ? <Dashboard /> : <Redirect to="/" />
+                render={(props) =>
+                  isLoggedIn ? <Dashboard {...props} favourites={favourites}  deleteFavourite={deleteFavourite} addToFavourite={addToFavourite} /> : <Redirect to="/" />
                 }
               />
               <Route
@@ -117,6 +160,7 @@ function App() {
               <Route exact path="/albums/:albumId" component={Album} />
               <Route exact path="/artists/:artistId" component={Artist} />
               <Route exact path="/genres/:genreId" component={Genre} />
+              <Route exact path="/seeAllFavourites" render={(props) => isLoggedIn ? <SeeAllFavourites {...props} favourites={favourites} deleteFavourite={deleteFavourite} /> : <Redirect to="/" />} />
 
               <Route
                 exact
@@ -127,6 +171,11 @@ function App() {
                     setsnackMessage={setsnackMessage}
                     setsnackOpen={setsnackOpen}
                     setseverity={setseverity}
+                    isLoggedIn={isLoggedIn}
+                    favourites={favourites}
+                    setfavourites={setfavourites}
+                    deleteFavourite={deleteFavourite}
+                    addToFavourite={addToFavourite}
                   />
                 )}
               />

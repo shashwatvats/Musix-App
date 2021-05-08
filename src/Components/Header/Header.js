@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 function Header(props) {
   let history = useHistory();
@@ -88,9 +90,14 @@ function Header(props) {
               {props.isLoggedIn ? (
                 <li className="nav-item">
                   <span className="nav-link">
-                    Welcome,<b>{localStorage.getItem("firstName")}</b>
-                  </span>{" "}
+                    <img className="me-2" src="https://cdn.icon-icons.com/icons2/876/PNG/512/man-with-vest-and-tie_icon-icons.com_68298.png" width="24rem" height="24rem" />
+
+                    <b>{localStorage.getItem("firstName")}</b>
+                  </span>
+
                 </li>
+
+
               ) : (
                 <li className="nav-item">
                   <Button
@@ -108,16 +115,15 @@ function Header(props) {
               )}
 
               {props.isLoggedIn ? (
-                <li className="nav-item">
-                  <Button
-                    className="nav-link"
-                    variant="contained"
-                    style={{ backgroundColor: "#263c3c", color: "white" }}
-                    onClick={logOutHandler}
-                  >
-                    LogOut <i className="fas fa-sign-in-alt"></i>
-                  </Button>
-                </li>
+                <DropdownButton id="dropdown-item-button" className="header-dropdown">
+                  <Dropdown.Item as="button">
+                    <span
+                      onClick={logOutHandler}
+                    >
+                      LogOut <i className="fas fa-sign-in-alt"></i>
+                    </span>
+                  </Dropdown.Item>
+                </DropdownButton>
               ) : (
                 ""
               )}

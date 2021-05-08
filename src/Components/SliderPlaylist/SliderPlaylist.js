@@ -10,32 +10,13 @@ function SliderPlaylist(props) {
   const screenSize = useContext(AppContext);
   const [songs, setsongs] = useState([]);
   const [loading, setloading] = useState(true);
-  const { playlist, favouriteSongsIds } = props;
+  const { playlist, favouriteSongsIds, addToFavourite, deleteFavourite } = props;
   const [playbutton, setplaybutton] = useState({});
 
   let arr = [];
 
-  function addToFavourite(song) {
-    fetch("http://localhost:4000/favourites", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        id: `${localStorage.getItem("email")}-${song.id}`,
-        email: localStorage.getItem("email"),
-        albumId: song.albumId,
-        previewURL: song.previewURL,
-        name: song.name,
-      }),
-    });
-  }
 
-  function deleteFavourite(id) {
-    fetch(`http://localhost:4000/favourites/${id}`, {
-      method: "DELETE",
-    });
-  }
+ 
 
   function carouselSlider() {
     let sizes = [576, 992, 1400];

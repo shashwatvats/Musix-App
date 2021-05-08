@@ -2,18 +2,16 @@ import React, { useContext, useState } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Paper from "@material-ui/core/Paper";
 import { AppContext } from "../../App";
+import { Link } from 'react-router-dom';
 
 function FavouriteSlider(props) {
   const [playbutton, setplaybutton] = useState({});
   const screenSize = useContext(AppContext);
   let arr = [];
-  const { favourites } = props;
+  const { favourites , deleteFavourite} = props;
 
-  function deleteFavourite(id) {
-    fetch(`http://localhost:4000/favourites/${id}`, {
-      method: "DELETE",
-    });
-  }
+  
+
 
   function carouselSlider() {
     let sizes = [576, 992, 1400];
@@ -106,7 +104,14 @@ function FavouriteSlider(props) {
 
   return (
     <Paper className="mb-3" elevation={7} style={{ padding: "10px" }}>
-      <div className="h4 text-danger">Favourite Songs</div>
+      <div className="d-flex justify-content-between">
+        <div className="h4 text-danger">Favourite Songs</div>
+        <div>
+          <Link exact to="/seeAllFavourites">
+            See All
+          </Link>
+        </div>
+      </div>
       <div
         id="favourites"
         className="carousel slide carousel-fade"

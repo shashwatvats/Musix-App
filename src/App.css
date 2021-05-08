@@ -64,3 +64,12 @@
 .carasoulbtn:hover {
   color: red;
 }
+
+.header-dropdown .btn-primary {
+  background-color: transparent;
+  border-color: transparent;
+}
+.header-dropdown .btn-primary:focus {
+  background-color: transparent;
+  border-color: transparent;
+}

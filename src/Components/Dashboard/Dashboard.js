@@ -62,11 +62,14 @@ function Dashboard(props) {
               <img
                 data-testid="imageid"
                 style={{ objectFit: "cover", borderRadius: "15px" }}
-                className="d-block w-100"
+                className="d-block w-100 mainCarousel"
                 src={`https://api.napster.com/imageserver/v2/albums/${item.albumId}/images/500x500.jpg`}
                 alt="First slide"
               />
-              <Carousel.Caption>
+              <Carousel.Caption
+                style={{ pointerEvents: "none" }}
+                className="mainCarasoulCaption"
+              >
                 <audio
                   src={item.previewURL}
                   id={`main-carasoul-play-${item.id}`}
@@ -76,7 +79,7 @@ function Dashboard(props) {
                 <div>
                   {mainCarasoulplaybutton[item.id] ? (
                     <i
-                      style={{ cursor: "pointer" }}
+                      style={{ pointerEvents: "initial",cursor: "pointer" }}
                       onClick={() => {
                         document
                           .getElementById(`main-carasoul-play-${item.id}`)
@@ -89,7 +92,7 @@ function Dashboard(props) {
                     ></i>
                   ) : (
                     <i
-                      style={{ cursor: "pointer" }}
+                      style={{ pointerEvents: "initial" , cursor: "pointer" }}
                       onClick={() => {
                         document
                           .getElementById(`main-carasoul-play-${item.id}`)
@@ -98,7 +101,7 @@ function Dashboard(props) {
                           return { ...prevState, [item.id]: true };
                         });
                       }}
-                      className="far fa-play-circle fa-3x"
+                      className="far fa-play-circle fa-3x "
                     ></i>
                   )}
                 </div>
@@ -109,7 +112,7 @@ function Dashboard(props) {
           ))}
         </Carousel>
 
-        <FavouriteSlider favourites={favourites} deleteFavourite={deleteFavourite}  />
+        <FavouriteSlider favourites={favourites} deleteFavourite={deleteFavourite} />
 
         <SliderGenre />
         <SliderArtist />

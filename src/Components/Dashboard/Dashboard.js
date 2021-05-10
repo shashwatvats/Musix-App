@@ -51,7 +51,7 @@ function Dashboard(props) {
       .then((favouritess) => {
         setfavourites(favouritess);
       });
-  }, []);
+  }, [setfavourites]);
 
   let favouriteSongsIds = favourites.map((favourite) => favourite.id);
 

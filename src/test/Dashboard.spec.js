@@ -4,6 +4,7 @@ import { render as renderer, unmountComponentAtNode } from "react-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";
+import App from "../App";
 
 describe("Dashboard Component TestCases", () => {
   let element = "";
@@ -22,7 +23,7 @@ describe("Dashboard Component TestCases", () => {
   test("Should Dashboard Have Rendering", () => {
     render(
       <Router>
-        <Dashboard />
+        <App />
       </Router>
     );
   });
@@ -30,7 +31,7 @@ describe("Dashboard Component TestCases", () => {
   test("Should have attribute in image in Dashboard Component", () => {
     renderer(
       <Router>
-        <Dashboard />
+        <App />
       </Router>,
       element
     );
@@ -41,7 +42,7 @@ describe("Dashboard Component TestCases", () => {
   test("Should have atleast one div in Dashboard component", () => {
     renderer(
       <Router>
-        <Dashboard />
+        <App />
       </Router>,
       element
     );

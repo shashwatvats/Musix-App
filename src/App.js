@@ -14,6 +14,7 @@ import Artist from "./Components/Artist/Artist";
 import Genre from "./Components/Genre/Genre";
 import Search from "./Components/Search/Search";
 import SeeAllFavourites from "./Components/SeeAllFavourites/SeeAllFavourites";
+import NotFound from "./Components/NotFound/NotFound";
 export const AppContext = React.createContext();
 
 function App() {
@@ -25,7 +26,6 @@ function App() {
   const [modalOpen, setmodalOpen] = useState(false);
   const [type, settype] = useState("");
   const [isLoggedIn, setisLoggedIn] = useState(false);
-
 
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -47,9 +47,8 @@ function App() {
     await fetch(`http://localhost:4000/favourites/${id}`, {
       method: "DELETE",
     });
-    setfavourites(favourites.filter(favourite => favourite.id !== id));
+    setfavourites(favourites.filter((favourite) => favourite.id !== id));
   }
-
 
   function addToFavourite(song) {
     fetch("http://localhost:4000/favourites", {
@@ -64,11 +63,11 @@ function App() {
         previewURL: song.previewURL,
         name: song.name,
       }),
-    }).then(res => res.json())
-      .then(favourite => {
-        setfavourites([...favourites,favourite])
+    })
+      .then((res) => res.json())
+      .then((favourite) => {
+        setfavourites([...favourites, favourite]);
       });
-
   }
 
   useEffect(() => {
@@ -81,8 +80,6 @@ function App() {
       });
   }, []);
 
-
-
   let component = "";
   if (type === "login")
     component = (
@@ -93,7 +90,7 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-      // setfirstName={setfirstName}
+        // setfirstName={setfirstName}
       />
     );
   else if (type === "register")
@@ -147,7 +144,16 @@ function App() {
                 exact
                 path="/dashboard"
                 render={(props) =>
-                  isLoggedIn ? <Dashboard {...props} favourites={favourites}  deleteFavourite={deleteFavourite} addToFavourite={addToFavourite} /> : <Redirect to="/" />
+                  isLoggedIn ? (
+                    <Dashboard
+                      {...props}
+                      favourites={favourites}
+                      deleteFavourite={deleteFavourite}
+                      addToFavourite={addToFavourite}
+                    />
+                  ) : (
+                    <Redirect to="/" />
+                  )
                 }
               />
               <Route
@@ -160,7 +166,21 @@ function App() {
               <Route exact path="/albums/:albumId" component={Album} />
               <Route exact path="/artists/:artistId" component={Artist} />
               <Route exact path="/genres/:genreId" component={Genre} />
-              <Route exact path="/seeAllFavourites" render={(props) => isLoggedIn ? <SeeAllFavourites {...props} favourites={favourites} deleteFavourite={deleteFavourite} /> : <Redirect to="/" />} />
+              <Route
+                exact
+                path="/seeAllFavourites"
+                render={(props) =>
+                  isLoggedIn ? (
+                    <SeeAllFavourites
+                      {...props}
+                      favourites={favourites}
+                      deleteFavourite={deleteFavourite}
+                    />
+                  ) : (
+                    <Redirect to="/" />
+                  )
+                }
+              />
 
               <Route
                 exact
@@ -179,6 +199,7 @@ function App() {
                   />
                 )}
               />
+              <Route path="*" component={NotFound} />
             </Switch>
 
             <Modal

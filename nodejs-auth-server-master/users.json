@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "John",
+      "lastname": "Doe",
+      "city": "New Delhi",
+      "age": 25,
+      "email": "john@gmail.com",
+      "password": "1234567"
+    },
+    {
+      "id": 2,
+      "firstname": "Peter",
+      "lastname": "Parker",
+      "city": "Mumbai",
+      "age": 30,
+      "email": "peter@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 3,
+      "firstname": "Shashwat",
+      "lastname": "Vats",
+      "city": "Jaunpur",
+      "age": "23",
+      "email": "shashwat@gmail.com",
+      "password": "Shashwat@123"
+    },
+    {
+      "id": 4,
+      "firstname": "Ritik",
+      "lastname": "Agarwal",
+      "city": "",
+      "age": "",
+      "email": "Ritik@gmail.com",
+      "password": "Ritik@123"
+    }
+  ]
+}

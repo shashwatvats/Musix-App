@@ -14,7 +14,6 @@ function Genre(props) {
       .then((data) => {
         setgenre(data.genres[0]);
         setloading(false);
-        console.log(data.genres[0]);
       });
   }, [props.match.params.genreId]);
   return (

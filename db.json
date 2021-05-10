@@ -1,118 +1,6 @@
 {
   "favourites": [
     {
-      "id": "a-tra.574746173",
-      "email": "a",
-      "albumId": "alb.574746172",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/5/1/0/5/2365650155.mp3",
-      "name": "One By One (feat. Elderbrook & Andhim)"
-    },
-    {
-      "id": "q-tra.579019959",
-      "email": "q",
-      "albumId": "alb.579019957",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
-      "name": "Your Power"
-    },
-    {
-      "id": "q-tra.578175454",
-      "email": "q",
-      "albumId": "alb.578175453",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/2/3/8/7/2373178325.mp3",
-      "name": "Die For a Man (feat. Lil Uzi Vert)"
-    },
-    {
-      "id": "q-tra.484332151",
-      "email": "q",
-      "albumId": "alb.484332144",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/6/7/2/7/1/2114717276.mp3",
-      "name": "The Good Ones"
-    },
-    {
-      "id": "c-tra.570433593",
-      "email": "c",
-      "albumId": "alb.570433584",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/8/7/7/2/2359827789.mp3",
-      "name": "Met Him Last Night"
-    },
-    {
-      "id": "c-tra.525431267",
-      "email": "c",
-      "albumId": "alb.525431265",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/3/5/4/5/5/2237855453.mp3",
-      "name": "34+35"
-    },
-    {
-      "id": "c-tra.578175454",
-      "email": "c",
-      "albumId": "alb.578175453",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/2/3/8/7/2373178325.mp3",
-      "name": "Die For a Man (feat. Lil Uzi Vert)"
-    },
-    {
-      "id": "c-tra.576892505",
-      "email": "c",
-      "albumId": "alb.576892429",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/2/6/7/3/2374837629.mp3",
-      "name": "Little Did I Know"
-    },
-    {
-      "id": "c-tra.579019959",
-      "email": "c",
-      "albumId": "alb.579019957",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
-      "name": "Your Power"
-    },
-    {
-      "id": "a-tra.579080594",
-      "email": "a",
-      "albumId": "alb.579080592",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/1/2/4/2375242190.mp3",
-      "name": "EVERY CHANCE I GET"
-    },
-    {
-      "id": "a-tra.572148695",
-      "email": "a",
-      "albumId": "alb.572148685",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/5/7/5/0/2360105750.mp3",
-      "name": "Down To One"
-    },
-    {
-      "id": "null-tra.577181360",
-      "email": null,
-      "albumId": "alb.577181345",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/4/5/2/6/3/2370736254.mp3",
-      "name": "Spiral"
-    },
-    {
-      "id": "null-tra.543785914",
-      "email": null,
-      "albumId": "alb.543785906",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/5/1/7/6/2/2275526715.mp3",
-      "name": "Still Trappin'"
-    },
-    {
-      "id": "null-tra.573895492",
-      "email": null,
-      "albumId": "alb.573895416",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/5/1/1/4/2363741150.mp3",
-      "name": "Forever & Always (Taylor’s Version)"
-    },
-    {
-      "id": "null-tra.579019959",
-      "email": null,
-      "albumId": "alb.579019957",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
-      "name": "Your Power"
-    },
-    {
-      "id": "as-tra.567438111",
-      "email": "as",
-      "albumId": "alb.567438099",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/2/1/1/1/9/2376391112.mp3",
-      "name": "Once In A Lifetime"
-    },
-    {
       "id": "Ritik@gmail.com-tra.580059692",
       "email": "Ritik@gmail.com",
       "albumId": "alb.580059691",
@@ -120,53 +8,11 @@
       "name": "7 De Mayo"
     },
     {
-      "id": "Ritik@gmail.com-tra.563445415",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.563445409",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/1/2/5/9/8/2345089521.mp3",
-      "name": "When You See Yourself, Are You Far Away"
-    },
-    {
       "id": "Ritik@gmail.com-tra.579974451",
       "email": "Ritik@gmail.com",
       "albumId": "alb.579974450",
       "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/0/6/4/5/2376654600.mp3",
       "name": "Hero"
-    },
-    {
-      "id": "Ritik@gmail.com-tra.579019959",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.579019957",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
-      "name": "Your Power"
-    },
-    {
-      "id": "Ritik@gmail.com-tra.573844875",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.573844866",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/6/2/1/8/0/2366708126.mp3",
-      "name": "Slidin' (EOB Remix)"
-    },
-    {
-      "id": "Ritik@gmail.com-tra.567438111",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.567438099",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/2/1/1/1/9/2376391112.mp3",
-      "name": "Once In A Lifetime"
-    },
-    {
-      "id": "Ritik@gmail.com-tra.576027234",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.576027233",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/4/2/7/8/2370087240.mp3",
-      "name": "Cry About It Later"
-    },
-    {
-      "id": "Ritik@gmail.com-tra.567109362",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.567109361",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/6/0/9/5/6/2350365906.mp3",
-      "name": "Symptom of Your Touch"
     },
     {
       "id": "shashwat@gmail.com-tra.579414499",

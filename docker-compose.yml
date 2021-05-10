@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+    authapi:
+        image: authserver
+        ports:
+            - "9000:9000"
+
+    frontend :
+        image: musixapp  
+        ports: 
+            - "5000:80"       
+        depends_on: 
+            - authapi
+            

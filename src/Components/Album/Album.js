@@ -7,7 +7,6 @@ function Album(props) {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    console.log("album");
     fetch(
       `https://api.napster.com/v2.2/albums/${props.match.params.albumId}?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4`
     )

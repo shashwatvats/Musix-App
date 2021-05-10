@@ -107,7 +107,7 @@ function FavouriteSlider(props) {
       <div className="d-flex justify-content-between">
         <div className="h4 text-danger">Favourite Songs</div>
         <div>
-          <Link exact to="/seeAllFavourites">
+          <Link to="/seeAllFavourites">
             See All
           </Link>
         </div>

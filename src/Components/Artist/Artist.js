@@ -14,9 +14,8 @@ function Artist(props) {
       .then((data) => {
         setartist(data.artists[0]);
         setloading(false);
-       
       });
-  }, []);
+  }, [props.match.params.artistId]);
   return loading ? (
     <Spinner />
   ) : (

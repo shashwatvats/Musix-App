@@ -16,7 +16,7 @@ function Genre(props) {
         setloading(false);
         console.log(data.genres[0]);
       });
-  }, []);
+  }, [props.match.params.genreId]);
   return (
       loading? <Spinner /> :
     <div>

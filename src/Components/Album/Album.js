@@ -4,9 +4,10 @@ import Spinner from "../Spinner/Spinner";
 
 function Album(props) {
   const [album, setalbum] = useState({});
-  const [loading, setloading] = useState(true)
-  
+  const [loading, setloading] = useState(true);
+
   useEffect(() => {
+    console.log("album");
     fetch(
       `https://api.napster.com/v2.2/albums/${props.match.params.albumId}?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4`
     )
@@ -15,9 +16,10 @@ function Album(props) {
         setalbum(data.albums[0]);
         setloading(false);
       });
-  },[]);
-  return (
-      loading? <Spinner /> :
+  }, [props.match.params.albumId]);
+  return loading ? (
+    <Spinner />
+  ) : (
     <div>
       {/* {album.links.tracks.href} */}
       <AlbumDisplay album={album} />

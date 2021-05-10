@@ -10,13 +10,15 @@ function SliderPlaylist(props) {
   const screenSize = useContext(AppContext);
   const [songs, setsongs] = useState([]);
   const [loading, setloading] = useState(true);
-  const { playlist, favouriteSongsIds, addToFavourite, deleteFavourite } = props;
+  const {
+    playlist,
+    favouriteSongsIds,
+    addToFavourite,
+    deleteFavourite,
+  } = props;
   const [playbutton, setplaybutton] = useState({});
 
   let arr = [];
-
-
- 
 
   function carouselSlider() {
     let sizes = [576, 992, 1400];
@@ -122,9 +124,8 @@ function SliderPlaylist(props) {
       .then((data) => {
         setsongs(data.tracks);
         setloading(false);
-        carouselSlider();
       });
-  }, []);
+  }, [playlist.link]);
 
   carouselSlider();
   return loading ? (

@@ -12,7 +12,7 @@ function AlbumDisplay(props) {
     )
       .then((res) => res.json())
       .then((data) => setsongs(data.tracks));
-  }, []);
+  }, [album.links.tracks.href]);
   return (
     <div>
       <div className="container mt-4">
@@ -55,7 +55,7 @@ function AlbumDisplay(props) {
             <p className="h2">{album.name}</p>
             <p>{album.label}</p>
             {songs.map((song) => (
-              <div className="d-flex align-content-center p-2 mb-1">
+              <div key={song.id} className="d-flex align-content-center p-2 mb-1">
                 <img
                   src={`https://api.napster.com/imageserver/v2/albums/${album.id}/images/70x70.jpg`}
                   alt="..."

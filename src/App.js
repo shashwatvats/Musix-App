@@ -70,15 +70,7 @@ function App() {
       });
   }
 
-  useEffect(() => {
-    fetch(
-      `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
-    )
-      .then((res) => res.json())
-      .then((favouritess) => {
-        setfavourites(favouritess);
-      });
-  }, []);
+  
 
   let component = "";
   if (type === "login")
@@ -148,6 +140,7 @@ function App() {
                     <Dashboard
                       {...props}
                       favourites={favourites}
+                      setfavourites={setfavourites}
                       deleteFavourite={deleteFavourite}
                       addToFavourite={addToFavourite}
                     />

@@ -30,14 +30,15 @@ function Login(props) {
       .then((data) => {
         if (data.status === 200) {
           localStorage.setItem("token", data.access_token);
+          localStorage.setItem("firstName", data.userData.firstname);
+          localStorage.setItem("email", data.userData.email);
           props.setseverity("success");
           props.setsnackOpen(true);
           props.setsnackMessage("LoggedIn Successfully!!");
           props.setisLoggedIn(true);
           props.setmodalOpen(false);
           // props.setfirstName(data.userData.firstname);
-          localStorage.setItem("firstName", data.userData.firstname);
-          localStorage.setItem("email", data.userData.email);
+
           return;
         }
         props.setseverity("error");

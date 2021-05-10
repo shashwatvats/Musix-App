@@ -12,7 +12,7 @@ function Dashboard(props) {
   const [playlists, setplaylists] = useState([]);
   const [tracks, settracks] = useState([]);
   const [loading, setloading] = useState(true);
-  const { favourites, deleteFavourite, addToFavourite } = props;
+  const { favourites, deleteFavourite, addToFavourite, setfavourites } = props;
   const [mainCarasoulplaybutton, setmainCarasoulplaybutton] = useState({});
 
   useEffect(() => {
@@ -43,7 +43,15 @@ function Dashboard(props) {
       });
   }, []);
 
-
+  useEffect(() => {
+    fetch(
+      `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
+    )
+      .then((res) => res.json())
+      .then((favouritess) => {
+        setfavourites(favouritess);
+      });
+  }, []);
 
   let favouriteSongsIds = favourites.map((favourite) => favourite.id);
 
@@ -79,7 +87,7 @@ function Dashboard(props) {
                 <div>
                   {mainCarasoulplaybutton[item.id] ? (
                     <i
-                      style={{ pointerEvents: "initial",cursor: "pointer" }}
+                      style={{ pointerEvents: "initial", cursor: "pointer" }}
                       onClick={() => {
                         document
                           .getElementById(`main-carasoul-play-${item.id}`)
@@ -92,7 +100,7 @@ function Dashboard(props) {
                     ></i>
                   ) : (
                     <i
-                      style={{ pointerEvents: "initial" , cursor: "pointer" }}
+                      style={{ pointerEvents: "initial", cursor: "pointer" }}
                       onClick={() => {
                         document
                           .getElementById(`main-carasoul-play-${item.id}`)
@@ -112,7 +120,10 @@ function Dashboard(props) {
           ))}
         </Carousel>
 
-        <FavouriteSlider favourites={favourites} deleteFavourite={deleteFavourite} />
+        <FavouriteSlider
+          favourites={favourites}
+          deleteFavourite={deleteFavourite}
+        />
 
         <SliderGenre />
         <SliderArtist />

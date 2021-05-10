@@ -45,7 +45,6 @@ describe("Search Component TestCases", () => {
       </Router>,
       element
     );
-    screen.debug(element);
     const count = element.getElementsByTagName("input").length;
     expect(count).toBeGreaterThanOrEqual(0);
   });

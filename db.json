@@ -1,13 +1,6 @@
 {
   "favourites": [
     {
-      "id": "Ritik@gmail.com-tra.580059692",
-      "email": "Ritik@gmail.com",
-      "albumId": "alb.580059691",
-      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/1/9/1/6/9/2376796191.mp3",
-      "name": "7 De Mayo"
-    },
-    {
       "id": "shashwat@gmail.com-tra.579414499",
       "email": "shashwat@gmail.com",
       "albumId": "alb.579414496",
@@ -27,6 +20,69 @@
       "albumId": "alb.579414496",
       "previewURL": "https://listen.hs.llnwd.net/g3/prvw/7/8/7/0/1/2375410787.mp3",
       "name": "Tiempo"
+    },
+    {
+      "id": "Sachin@gmail.com-tra.579414499",
+      "email": "Sachin@gmail.com",
+      "albumId": "alb.579414496",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/7/8/7/0/1/2375410787.mp3",
+      "name": "Tiempo"
+    },
+    {
+      "id": "Sachin@gmail.com-tra.580387828",
+      "email": "Sachin@gmail.com",
+      "albumId": "alb.580387827",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/7/5/5/6/1/2378316557.mp3",
+      "name": "Higher Power"
+    },
+    {
+      "id": "Sachin@gmail.com-tra.579975758",
+      "email": "Sachin@gmail.com",
+      "albumId": "alb.579975757",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/9/0/3/7/2377973099.mp3",
+      "name": "Break My Heart Myself (feat. Travis Barker)"
+    },
+    {
+      "id": "rayed@gmail.com-tra.579974456",
+      "email": "rayed@gmail.com",
+      "albumId": "alb.579974450",
+      "previewURL": "",
+      "name": "Blue Dream"
+    },
+    {
+      "id": "steve@gmail.com-tra.580387828",
+      "email": "steve@gmail.com",
+      "albumId": "alb.580387827",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/7/5/5/6/1/2378316557.mp3",
+      "name": "Higher Power"
+    },
+    {
+      "id": "steve@gmail.com-tra.579414499",
+      "email": "steve@gmail.com",
+      "albumId": "alb.579414496",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/7/8/7/0/1/2375410787.mp3",
+      "name": "Tiempo"
+    },
+    {
+      "id": "steve@gmail.com-tra.579975758",
+      "email": "steve@gmail.com",
+      "albumId": "alb.579975757",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/9/9/0/3/7/2377973099.mp3",
+      "name": "Break My Heart Myself (feat. Travis Barker)"
+    },
+    {
+      "id": "steve@gmail.com-tra.576027234",
+      "email": "steve@gmail.com",
+      "albumId": "alb.576027233",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/4/2/7/8/2370087240.mp3",
+      "name": "Cry About It Later"
+    },
+    {
+      "id": "Ritik@gmail.com-tra.579019959",
+      "email": "Ritik@gmail.com",
+      "albumId": "alb.579019957",
+      "previewURL": "https://listen.hs.llnwd.net/g3/prvw/0/9/4/8/5/2374658490.mp3",
+      "name": "Your Power"
     }
   ]
 }

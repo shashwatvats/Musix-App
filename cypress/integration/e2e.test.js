@@ -102,7 +102,7 @@ describe("Muzix Test cases", () => {
     );
   });
   it("should show Green Text on Correct Email", () => {
-    cy.get("#email").clear().type("fsghjs@as.xccom");
+    cy.get("#email").clear().type("fsghkjs@as.xccom");
     cy.contains("Email should be Valid").should(
       "have.css",
       "color",

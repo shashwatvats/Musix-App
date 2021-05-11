@@ -43,6 +43,7 @@ function Register(props) {
       props.setsnackMessage("Desired Password, Email and firstName required!!");
       return;
     }
+    //For Registering the User
     fetch("http://localhost:9000/auth/register", {
       method: "POST",
       headers: {
@@ -90,7 +91,7 @@ function Register(props) {
       checkEmail = false;
     };
   }, []);
-
+  //To Validate the Email Of User
   function validateEmailRegEx(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -107,7 +108,7 @@ function Register(props) {
       emailValid = { color: "red" };
     }
   }
-
+  //To Validate the Password Of User
   function passwordHandler(e) {
     let pass = e.target.value;
     setpassword(pass);

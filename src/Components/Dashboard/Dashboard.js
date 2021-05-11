@@ -14,7 +14,7 @@ function Dashboard(props) {
   const [loading, setloading] = useState(true);
   const { favourites, deleteFavourite, addToFavourite, setfavourites } = props;
   const [mainCarasoulplaybutton, setmainCarasoulplaybutton] = useState({});
-
+  //Fetching the data from API for Playlist
   useEffect(() => {
     fetch(
       "https://api.napster.com/v2.2/playlists?limit=5&apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4"
@@ -33,6 +33,7 @@ function Dashboard(props) {
         setloading(false);
       });
   }, []);
+  //Fetching the data from API for Top Tracks
   useEffect(() => {
     fetch(
       "http://api.napster.com/v2.2/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=6"
@@ -43,6 +44,7 @@ function Dashboard(props) {
       });
   }, []);
 
+  //Fetching the favourites
   useEffect(() => {
     fetch(
       `http://localhost:4000/favourites?email=${localStorage.getItem("email")}`
@@ -54,6 +56,8 @@ function Dashboard(props) {
   }, [setfavourites]);
 
   let favouriteSongsIds = favourites.map((favourite) => favourite.id);
+
+  //the spinner will show when the data is loading
 
   return loading ? (
     <Spinner />

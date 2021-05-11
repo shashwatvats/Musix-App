@@ -30,11 +30,11 @@ function App() {
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
-
+  //This function will hande the screen size
   window.onresize = function () {
     setscreenSize(window.innerWidth);
   };
-
+  //This is related to the snackbar
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -42,14 +42,14 @@ function App() {
 
     setsnackOpen(false);
   };
-
+  //Function to delete the favourite
   async function deleteFavourite(id) {
     await fetch(`http://localhost:4000/favourites/${id}`, {
       method: "DELETE",
     });
     setfavourites(favourites.filter((favourite) => favourite.id !== id));
   }
-
+  //function to add the favourite
   function addToFavourite(song) {
     fetch("http://localhost:4000/favourites", {
       method: "POST",
@@ -71,7 +71,7 @@ function App() {
   }
 
   
-
+  //It will redirect to login/register component
   let component = "";
   if (type === "login")
     component = (
@@ -95,7 +95,7 @@ function App() {
         settype={settype}
       />
     );
-
+      //Fetching is Authenticated
   useEffect(() => {
     fetch("http://localhost:9000/auth/isAuthenticated", {
       method: "POST",

@@ -31,6 +31,9 @@ function Dashboard(props) {
           })
         );
         setloading(false);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
   //Fetching the data from API for Top Tracks
@@ -41,6 +44,9 @@ function Dashboard(props) {
       .then((res) => res.json())
       .then((data) => {
         settracks(data.tracks);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
 
@@ -52,6 +58,9 @@ function Dashboard(props) {
       .then((res) => res.json())
       .then((favouritess) => {
         setfavourites(favouritess);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, [setfavourites]);
 

@@ -30,6 +30,9 @@ function Home() {
           })
         );
         setloading(false);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
   //Fetching the data from API for Top Tracks
@@ -40,6 +43,9 @@ function Home() {
       .then((res) => res.json())
       .then((data) => {
         settracks(data.tracks);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
   //the spinner will show when the data is loading
@@ -92,6 +98,10 @@ function Home() {
                       document
                         .getElementById(`main-carasoul-play-${item.id}`)
                         .play();
+                      Object.keys(mainCarasoulplaybutton).forEach((key) => {
+                        document.getElementById(`main-carasoul-play-${key}`).pause();
+                        setmainCarasoulplaybutton(mainCarasoulplaybutton[key] = false);
+                      });
                       setmainCarasoulplaybutton((prevState) => {
                         return { ...prevState, [item.id]: true };
                       });

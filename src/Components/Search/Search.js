@@ -13,7 +13,7 @@ function Search(props) {
   const [query, setquery] = useState("");
   const [searchData, setsearchData] = useState({});
   const [loading, setloading] = useState(false);
-  const { favourites, deleteFavourite, isLoggedIn,addToFavourite } = props;
+  const { favourites, deleteFavourite, isLoggedIn, addToFavourite } = props;
 
   const queryHandler = (e) => {
     if (types.length === 0 || query === "") {
@@ -33,6 +33,9 @@ function Search(props) {
       .then((data) => {
         setsearchData(data.search.data);
         setloading(false);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   };
 

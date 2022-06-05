@@ -10,7 +10,10 @@ function GenreDisplay(props) {
       `http://api.napster.com/v2.2/genres/${genre.id}/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=10&range=day`
     )
       .then((res) => res.json())
-      .then((data) => setsongs(data.tracks));
+      .then((data) => setsongs(data.tracks))
+      .catch((err) => {
+        console.error('Error: ' + err)
+      });
   }, [genre.id]);
   return (
     <div>

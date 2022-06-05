@@ -14,6 +14,9 @@ function Album(props) {
       .then((data) => {
         setalbum(data.albums[0]);
         setloading(false);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, [props.match.params.albumId]);
   return loading ? (

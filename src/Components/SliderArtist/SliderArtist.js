@@ -13,6 +13,9 @@ function SliderArtist(props) {
       .then((res) => res.json())
       .then((data) => {
         setartists(data.artists);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
 

@@ -14,6 +14,9 @@ function Artist(props) {
       .then((data) => {
         setartist(data.artists[0]);
         setloading(false);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, [props.match.params.artistId]);
   return loading ? (

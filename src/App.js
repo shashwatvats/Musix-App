@@ -67,10 +67,13 @@ function App() {
       .then((res) => res.json())
       .then((favourite) => {
         setfavourites([...favourites, favourite]);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }
 
-  
+
   //It will redirect to login/register component
   let component = "";
   if (type === "login")
@@ -82,7 +85,7 @@ function App() {
         setmodalOpen={setmodalOpen}
         settype={settype}
         setisLoggedIn={setisLoggedIn}
-        // setfirstName={setfirstName}
+      // setfirstName={setfirstName}
       />
     );
   else if (type === "register")
@@ -95,7 +98,7 @@ function App() {
         settype={settype}
       />
     );
-      //Fetching is Authenticated
+  //Fetching is Authenticated
   useEffect(() => {
     fetch("http://localhost:9000/auth/isAuthenticated", {
       method: "POST",
@@ -109,6 +112,9 @@ function App() {
         if (data.isAuthenticated) {
           setisLoggedIn(true);
         }
+      })
+      .catch((err) => {
+        console.error('Error: ' + err);
       });
   }, []);
   return (

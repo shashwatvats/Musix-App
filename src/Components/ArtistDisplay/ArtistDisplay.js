@@ -10,7 +10,10 @@ function ArtistDisplay(props) {
       `${artist.links.topTracks.href}?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4`
     )
       .then((res) => res.json())
-      .then((data) => setsongs(data.tracks));
+      .then((data) => setsongs(data.tracks))
+      .catch((err) => {
+        console.error('Error: ' + err)
+      });
   }, [artist.links.topTracks.href]);
   return (
     <div>

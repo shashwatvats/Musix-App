@@ -13,6 +13,9 @@ function SliderGenre(props) {
       .then((res) => res.json())
       .then((data) => {
         setgenres(data.genres);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
 

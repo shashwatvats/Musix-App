@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import {} from "../Dashboard/Dashboard";
+import { } from "../Dashboard/Dashboard";
 import { AppContext } from "../../App";
 
 function SliderPlaylist(props) {
@@ -64,6 +64,10 @@ function SliderPlaylist(props) {
                         <i
                           onClick={() => {
                             document.getElementById(`play-${song.id}`).play();
+                            Object.keys(playbutton).forEach((key) => {
+                              document.getElementById(`play-${key}`).pause();
+                              setplaybutton(playbutton[key] = false);
+                            })
                             setplaybutton((prevState) => {
                               return { ...prevState, [song.id]: true };
                             });
@@ -124,6 +128,9 @@ function SliderPlaylist(props) {
       .then((data) => {
         setsongs(data.tracks);
         setloading(false);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, [playlist.link]);
 

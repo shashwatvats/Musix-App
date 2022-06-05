@@ -13,6 +13,9 @@ function SliderAlbum(props) {
       .then((res) => res.json())
       .then((data) => {
         setalbums(data.albums);
+      })
+      .catch((err) => {
+        console.error('Error: ' + err)
       });
   }, []);
 

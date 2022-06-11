@@ -154,10 +154,7 @@ Here is the list of components used to modularize the application
 
 <br/><br/><br/>
 
-Under the Guidance of -
-
-> Mr. Dhiraj Kumar
 
 Made By --
 
-> Ritik Agarwal , Shashwat vats , Sachin Shukla
+> Shashwat vats

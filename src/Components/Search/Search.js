@@ -26,7 +26,7 @@ function Search(props) {
 
     let typesString = types.join(",");
     fetch(
-      `http://api.napster.com/v2.2/search/verbose?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&query=${query}&type=${typesString}&per_type_limit=5
+      `https://api.napster.com/v2.2/search/verbose?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&query=${query}&type=${typesString}&per_type_limit=5
       }`
     )
       .then((res) => res.json())

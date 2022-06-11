@@ -7,7 +7,7 @@ function GenreDisplay(props) {
 
   useEffect(() => {
     fetch(
-      `http://api.napster.com/v2.2/genres/${genre.id}/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=10&range=day`
+      `https://api.napster.com/v2.2/genres/${genre.id}/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=10&range=day`
     )
       .then((res) => res.json())
       .then((data) => setsongs(data.tracks))

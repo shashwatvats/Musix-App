@@ -8,7 +8,7 @@ function SliderArtist(props) {
   let arr = [];
   useEffect(() => {
     fetch(
-      "https://api.napster.com/v2.2/artists/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=12"
+      "http://api.napster.com/v2.2/artists/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=12"
     )
       .then((res) => res.json())
       .then((data) => {

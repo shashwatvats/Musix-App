@@ -39,7 +39,7 @@ function Dashboard(props) {
   //Fetching the data from API for Top Tracks
   useEffect(() => {
     fetch(
-      "https://api.napster.com/v2.2/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=6"
+      "http://api.napster.com/v2.2/tracks/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=6"
     )
       .then((res) => res.json())
       .then((data) => {

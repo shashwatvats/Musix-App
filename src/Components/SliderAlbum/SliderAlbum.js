@@ -8,7 +8,7 @@ function SliderAlbum(props) {
   let arr = [];
   useEffect(() => {
     fetch(
-      "http://api.napster.com/v2.2/albums/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=12"
+      "https://api.napster.com/v2.2/albums/top?apikey=YTkxZTRhNzAtODdlNy00ZjMzLTg0MWItOTc0NmZmNjU4Yzk4&limit=12"
     )
       .then((res) => res.json())
       .then((data) => {
